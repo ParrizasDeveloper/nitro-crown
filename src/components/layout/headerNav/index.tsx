@@ -3,16 +3,15 @@ import { User as UserIcon } from "lucide-react";
 import Image from "next/image";
 
 export default function HeaderNav() {
-    
-
     return (
-        <header className="relative h-24 border-b-[1px] bg-black/35
-                border-utility/35">
+        <header className="absolute top-0 w-full h-28 p-4">
             <nav className={
                 `relative text-contrast flex h-full justify-between items-center
-                max-w-[1400px] m-auto`
+                m-auto`
             }>
-                <div className="relative h-full w-[100px]">
+                <div className={`bg-black/35 relative h-full cursor-pointer rounded-3xl py-3 px-7
+                    hover:bg-text/75 hover:duration-0 transition-colors duration-500`
+                }>
                     <Image
                         src='/images/NC.png'
                         width={1000}
@@ -22,12 +21,17 @@ export default function HeaderNav() {
                         priority
                     />
                 </div>
-
-                <div className="">
-                    <NavLinks />
-                </div>
-                <div className="w-[100px] text-center flex justify-center">
-                    <UserIcon color="#B0B0B0" size={42} strokeWidth={1}/>
+                <NavLinks />
+                <div 
+                    className={`bg-black/35 group h-full aspect-square rounded-3xl text-center 
+                    flex justify-center items-center cursor-pointer hover:bg-text/75 
+                    hover:duration-0 transition-all duration-500`}
+                >
+                    <UserIcon 
+                        color="#B0B0B0" 
+                        size={50} 
+                        className="stroke-1 group-hover:stroke-[1.5] transition-all"
+                    />
                 </div>
             </nav>
             

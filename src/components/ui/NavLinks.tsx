@@ -31,30 +31,39 @@ export default function NavLinks() {
     ]
 
     return (
-        <section className="relative flex text-lg" 
-            onMouseLeave={animationOut}
-            onMouseEnter={animationIn}
+        <section className="bg-black/35 relative rounded-3xl h-full p-2" 
+            
         >
-            <div ref={hoverDiv} className="absolute bg-neutral-800/75 w-full h-full top-0 rounded-md z-10 opacity-0"></div>
-            {links.map((link) => (
-                <Link 
-                    key={link.name}
-                    href={link.link}
-                    className={clsx(
-                        ` relative hover:text-contrast transition-colors duration-150`,
-                        {
-                            'text-contrast': pathName === link.link,
-                            'text-neutral-500': pathName !== link.link,
-                        }
-                    )}
-                    ref={el => {
-                        if (actualHover.current === el) return
-                    }}
-                    onMouseEnter={animationHover}
-                > 
-                    <p className="px-6 py-2 z-20 relative">{link.name.toUpperCase()}</p>
-                </Link>
-            ))}
+            <div 
+                ref={hoverDiv} 
+                className={`absolute bg-text/75 w-full h-full top-0 rounded-2xl z-10 
+                    opacity-0`}
+            ></div>
+            <div 
+                className="flex text-lg h-full rounded-3xl" 
+                onMouseLeave={animationOut}
+                onMouseEnter={animationIn}
+            >
+                {links.map((link) => (
+                    <Link
+                        key={link.name}
+                        href={link.link}
+                        className={clsx(
+                            ` relative hover:text-contrast transition-colors duration-150`,
+                            {
+                                'text-contrast': pathName === link.link,
+                                'text-neutral-500': pathName !== link.link,
+                            }
+                        )}
+                        ref={el => {
+                            if (actualHover.current === el) return
+                        }}
+                        onMouseEnter={animationHover}
+                    >
+                        <p className="flex items-center px-10 h-full z-20 relative">{link.name.toUpperCase()}</p>
+                    </Link>
+                ))}
+            </div>
         </section>
     )
 }
