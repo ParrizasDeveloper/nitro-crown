@@ -31,12 +31,13 @@ export default function NavLinks() {
     ]
 
     return (
-        <section className="bg-black/35 relative rounded-3xl h-full p-2" 
+        <section className="bg-black/35 relative rounded-3xl h-full p-2"
             
         >
             <div 
                 ref={hoverDiv} 
-                className={`absolute bg-text/75 w-full h-full top-0 rounded-2xl z-10 
+                className={`absolute bg-radial-[at_50%_50%] from-black from-80% 
+                    to-neutral-500 w-full h-full top-0 rounded-2xl z-10 
                     opacity-0`}
             ></div>
             <div 

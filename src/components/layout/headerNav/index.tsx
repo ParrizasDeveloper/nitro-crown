@@ -4,13 +4,16 @@ import Image from "next/image";
 
 export default function HeaderNav() {
     return (
-        <header className="absolute top-0 w-full h-28 p-4">
+        <header className="fixed top-0 w-full h-28 p-4 z-20">
             <nav className={
                 `relative text-contrast flex h-full justify-between items-center
                 m-auto`
             }>
-                <div className={`bg-black/35 relative h-full cursor-pointer rounded-3xl py-3 px-7
-                    hover:bg-text/75 hover:duration-0 transition-colors duration-500`
+                <div className={` relative h-full w-[150px] min-w-[150px] 
+                    cursor-pointer rounded-3xl py-3 px-7
+                    bg-radial-[at_50%_50%] from-black from-80% 
+                    to-neutral-500/0 hover:to-neutral-500 hover:duration-0 
+                    transition duration-500`
                 }>
                     <Image
                         src='/images/NC.png'
@@ -23,9 +26,11 @@ export default function HeaderNav() {
                 </div>
                 <NavLinks />
                 <div 
-                    className={`bg-black/35 group h-full aspect-square rounded-3xl text-center 
-                    flex justify-center items-center cursor-pointer hover:bg-text/75 
-                    hover:duration-0 transition-all duration-500`}
+                    className={`group h-full w-[150px] rounded-3xl text-center 
+                    flex justify-center items-center cursor-pointer 
+                    bg-radial-[at_50%_50%] from-black from-80% 
+                    to-neutral-500/0 hover:to-neutral-500 hover:duration-0  
+                    transition duration-500`}
                 >
                     <UserIcon 
                         color="#B0B0B0" 
