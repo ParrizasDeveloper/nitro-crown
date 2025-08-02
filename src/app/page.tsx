@@ -16,8 +16,8 @@ export default function Home() {
           MUSTANG
         </h1>
         <div className={`
-          w-[1400px] absolute z-20 left-1/2 translate-x-[-50%] top-[200px]
-          bg-[url(/images/home/mustang3.png)] bg-cover bg-no-repeat aspect-video
+          w-[1400px] absolute z-20 left-1/2 translate-x-[-50%] top-[220px]
+          bg-[url(/images/home/mustang.png)] bg-cover bg-no-repeat aspect-video
           mask-radial-at-bottom
         `}></div>
         <div className={`
