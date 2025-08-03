@@ -36,8 +36,7 @@ export default function NavLinks() {
         >
             <div 
                 ref={hoverDiv} 
-                className={`absolute bg-radial-[at_50%_50%] from-black from-80% 
-                    to-white w-full h-full top-0 rounded-2xl z-10 
+                className={`absolute border-2 border-neutral-700/50 w-full h-full top-0 rounded-2xl z-10 
                     opacity-0`}
             ></div>
             <div 
