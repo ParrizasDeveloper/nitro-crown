@@ -36,8 +36,8 @@ export default function NavLinks() {
         >
             <div 
                 ref={hoverDiv} 
-                className={`absolute border-2 border-neutral-700/50 w-full h-full top-0 rounded-2xl z-10 
-                    opacity-0`}
+                className={`absolute border-2 border-neutral-700/50 w-full h-full top-0 
+                    rounded-2xl z-10 opacity-0`}
             ></div>
             <div 
                 className="flex text-lg h-full rounded-3xl" 

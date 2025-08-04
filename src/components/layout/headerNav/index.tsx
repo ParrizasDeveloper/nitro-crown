@@ -10,10 +10,7 @@ export default function HeaderNav() {
                 m-auto`
             }>
                 <div className={` relative h-full w-[150px] min-w-[150px] 
-                    cursor-pointer rounded-3xl py-3 px-7
-                    bg-radial-[at_50%_50%] from-black from-80% 
-                    to-neutral-500/0 hover:to-neutral-500 hover:duration-0 
-                    transition duration-500`
+                    cursor-pointer rounded-3xl py-3 px-7`
                 }>
                     <Image
                         src='/images/NC.png'
@@ -26,17 +23,24 @@ export default function HeaderNav() {
                 </div>
                 <NavLinks />
                 <div 
-                    className={`group h-full w-[150px] rounded-3xl text-center 
-                    flex justify-center items-center cursor-pointer 
-                    bg-radial-[at_50%_50%] from-black from-80% 
-                    to-neutral-500/0 hover:to-neutral-500 hover:duration-0  
-                    transition duration-500`}
+                    className={`h-full w-[150px] rounded-3xl text-center 
+                    flex justify-center items-center`}
                 >
-                    <UserIcon 
-                        color="#B0B0B0" 
-                        size={50} 
-                        className="stroke-1 group-hover:stroke-[1.5] transition-all"
-                    />
+                    <div
+                        className={`group transition-all cursor-pointer rounded-2xl p-2
+                            border-2 border-neutral-700/0 hover:border-neutral-700/50
+                            hover:duration-0
+                        `}
+                    >
+                        <UserIcon
+                            color="#B0B0B0"
+                            size={50}
+                            className={`stroke-1 group-hover:stroke-[1.5] hover:duration-0
+                                transition-all    
+                            `}
+                        />
+                    </div>
+                    
                 </div>
             </nav>
             
