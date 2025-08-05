@@ -1,6 +1,30 @@
+'use client'
+
 import { anton } from "@/styles/fonts";
+import { homeCars } from "@/data/homeCars";
+import { useEffect, useState } from "react";
+
+type MainCar = {
+  brand: string,
+  title: string,
+  element: React.ReactElement
+}
 
 export default function Home() {
+  const [mainCars, setMainCars] = useState<MainCar[] | null>(null);
+
+  useEffect(() => {
+    const cars = homeCars.map(car => ({
+      brand: car.brand,
+      title: car.model.toUpperCase(),
+      element: <div className={`
+          w-[1400px] absolute z-20 left-1/2 translate-x-[-50%] top-[220px]
+          bg-[url(${car.imageBaseURL})] bg-cover bg-no-repeat aspect-video
+        `}></div>
+    }))
+
+    setMainCars(cars)
+  }, [])
 
   return (
     <>
@@ -18,7 +42,6 @@ export default function Home() {
         <div className={`
           w-[1400px] absolute z-20 left-1/2 translate-x-[-50%] top-[220px]
           bg-[url(/images/home/huracan.png)] bg-cover bg-no-repeat aspect-video
-          mask-radial-at-bottom
         `}></div>
         <div className={`
           absolute w-[2000px] aspect-square z-10  rounded-full top-[-200px]
