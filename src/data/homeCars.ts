@@ -1,20 +1,20 @@
 export const homeCars = [
     {
-        name: "Lamborghini Huracan",
-        brand: "Lamborghini",
-        model: "Huracan",
-        imageBaseURL: "/public/images/home/huracan.png",
-    },
-    {
         name: "Ford Mustang",
         brand: "Ford",
         model: "Mustang",
-        imageBaseURL: "/public/images/home/mustang.png",
+        imageBaseURL: "/images/home/mustang.webp",
+    },
+    {
+        name: "Lamborghini Huracan",
+        brand: "Lamborghini",
+        model: "Huracan",
+        imageBaseURL: "/images/home/huracan.webp",
     },
     {
         name: "Nissan GT-R",
         brand: "Nissan",
         model: "GT-R",
-        imageBaseURL: "/public/images/home/gtr.png",
+        imageBaseURL: "/images/home/gtr.webp",
     }
 ];
