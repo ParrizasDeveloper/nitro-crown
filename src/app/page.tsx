@@ -2,9 +2,11 @@
 
 import { anton } from "@/styles/fonts";
 import { homeCars } from "@/data/homeCars";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import gsap from "gsap";
+
 
 type MainCar = {
   brand: string,
@@ -14,6 +16,9 @@ type MainCar = {
 
 export default function Home() {
   const [mainCars, setMainCars] = useState<MainCar[] | null>(null);
+  const containerMainCars = useRef(null)
+  const direction = useRef<"prev" | "next" | null>(null)
+  //const tl = useRef(null)
 
   useEffect(() => {
     const cars = homeCars.map(car => ({
@@ -39,7 +44,14 @@ export default function Home() {
     if(last) {
       newArray.unshift(last)
     }
-    setMainCars(newArray)
+
+    const cars: HTMLDivElement[] = gsap.utils.toArray('.mainCar')
+    gsap.to(cars[0], {
+      x: "-100%",
+      onComplete: () => setMainCars(newArray)
+    })
+
+    
   }
 
   function slideRight() {
@@ -51,32 +63,39 @@ export default function Home() {
       newArray.push(first)
     }
 
+    direction.current = "next"
     setMainCars(newArray)
   }
+
 
   return (
     <>
       <section className={`
         relative flex flex-row justify-center items-start pt-32 z-10 
-        h-dvh overflow-hidden
+        h-dvh w-full overflow-hidden
       `}>
         <h1 className={`${anton.className}
           text-[20rem] tracking-widest leading-none
           relative text-transparent
           bg-clip-text bg-radial-[at_50%_75%] from-gold/50 via-70% via-neutral-800/50 to-black
         `}>
-          {mainCars && mainCars[1].title}
+          {mainCars && mainCars[0].title}
         </h1>
-        <div className={`
-          absolute w-[calc(100%*3)] flex justify-around top-[220px] z-20
-        `}>
-          {
-            mainCars?.map(car => (
-              <div key={car.title} className={`w-[1400px]`}>
+        <div
+          ref={containerMainCars}
+          className={`
+            absolute left-0 w-full flex top-[220px] z-20
+          `}
+        >
+          {mainCars?.map(car => (
+            <div key={car.title} className="w-full shrink-0">
+              <div
+                className={`mainCar w-[1400px] mx-auto`}
+              >
                 {car.element}
               </div>
-            ))
-          }
+            </div>
+          ))}
         </div>
         <div className={`
           absolute w-[2000px] aspect-square z-10  rounded-full top-[-200px]

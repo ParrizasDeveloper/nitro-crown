@@ -1,15 +1,15 @@
 export const homeCars = [
     {
-        name: "Ford Mustang",
-        brand: "Ford",
-        model: "Mustang",
-        imageBaseURL: "/images/home/mustang.webp",
-    },
-    {
         name: "Lamborghini Huracan",
         brand: "Lamborghini",
         model: "Huracan",
         imageBaseURL: "/images/home/huracan.webp",
+    },
+    {
+        name: "Ford Mustang",
+        brand: "Ford",
+        model: "Mustang",
+        imageBaseURL: "/images/home/mustang.webp",
     },
     {
         name: "Nissan GT-R",
