@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 
 type MainCar = {
@@ -17,8 +18,8 @@ type MainCar = {
 export default function Home() {
   const [mainCars, setMainCars] = useState<MainCar[] | null>(null);
   const containerMainCars = useRef(null)
-  const direction = useRef<"prev" | "next" | null>(null)
-  //const tl = useRef(null)
+  const direction = useRef<"next" | "prev" | null>(null)
+  const isAnimating = useRef<boolean>(false)
 
   useEffect(() => {
     const cars = homeCars.map(car => ({
@@ -36,8 +37,33 @@ export default function Home() {
     setMainCars(cars)
   }, [])
 
+  useGSAP(() => {
+    if(!mainCars || direction.current === null) { return }
+    isAnimating.current = true
+    //isAnimating.current = false
+    const cars: HTMLDivElement[] = gsap.utils.toArray('.mainCar')
+    const tl = gsap.timeline({
+      onComplete: () => {isAnimating.current = false}
+    })
+
+    if(direction.current === "prev") {
+      tl.from(cars, { x: "-100%" })
+    }
+    if(direction.current === "next") {
+      tl.from(cars.slice(0, cars.length - 1), { x: "100%" })
+      tl.fromTo(cars[cars.length - 1], {
+        position: "absolute",
+        left: 0
+      }, {x: "-100%"}, "<=")
+      tl.set(cars[cars.length - 1], {
+        position: "relative",
+        x: 0
+      })
+    }S
+  }, {scope: containerMainCars, dependencies: [mainCars]})
+
   function slideLeft() {
-    if(!mainCars) { return }
+    if(!mainCars || isAnimating.current) { return }
 
     const newArray = [...mainCars]
     const last = newArray.pop()
@@ -45,17 +71,13 @@ export default function Home() {
       newArray.unshift(last)
     }
 
-    const cars: HTMLDivElement[] = gsap.utils.toArray('.mainCar')
-    gsap.to(cars[0], {
-      x: "-100%",
-      onComplete: () => setMainCars(newArray)
-    })
-
-    
+    setMainCars(newArray)
+    direction.current = "prev"
   }
 
   function slideRight() {
-    if(!mainCars) { return }
+    if(!mainCars || isAnimating.current) { return }
+    isAnimating.current = true
 
     const newArray = [...mainCars]
     const first = newArray.shift()
@@ -63,8 +85,8 @@ export default function Home() {
       newArray.push(first)
     }
 
-    direction.current = "next"
     setMainCars(newArray)
+    direction.current = "next"
   }
 
 
@@ -88,9 +110,9 @@ export default function Home() {
           `}
         >
           {mainCars?.map(car => (
-            <div key={car.title} className="w-full shrink-0">
+            <div key={car.title} className="mainCar w-full shrink-0">
               <div
-                className={`mainCar w-[1400px] mx-auto`}
+                className={`w-[1400px] mx-auto`}
               >
                 {car.element}
               </div>
