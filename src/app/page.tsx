@@ -17,6 +17,7 @@ type MainCar = {
 
 export default function Home() {
   const [mainCars, setMainCars] = useState<MainCar[] | null>(null);
+  const title = useRef(null)
   const containerMainCars = useRef(null)
   const direction = useRef<"next" | "prev" | null>(null)
   const isAnimating = useRef<boolean>(false)
@@ -47,19 +48,42 @@ export default function Home() {
     })
 
     if(direction.current === "prev") {
-      tl.from(cars, { x: "-100%" })
+      tl.from(cars, { x: "-100%", ease: "power4.inOut" })
+      tl.from(cars[0], { scale: "0", opacity: 0, ease: "power4.inOut" }, "<=")
+      tl.to(cars[1], { scale: 0, opacity: 0, ease: "power4.inOut" }, "<=")
+      tl.set(cars[1], { scale: 1, opacity: 1 })
     }
     if(direction.current === "next") {
-      tl.from(cars.slice(0, cars.length - 1), { x: "100%" })
+      tl.from(cars.slice(0, cars.length - 1), {
+        x: "100%",
+        scale: 0,
+        opacity: 0,
+        ease: "power4.inOut" 
+      })
       tl.fromTo(cars[cars.length - 1], {
         position: "absolute",
-        left: 0
-      }, {x: "-100%"}, "<=")
+        left: 0,
+      }, {
+        x: "-100%",
+        scale: 0,
+        opacity: 0,
+        ease: "power4.inOut" 
+      }, "<=")
       tl.set(cars[cars.length - 1], {
         position: "relative",
-        x: 0
+        x: 0,
+        scale: 1,
+        opacity: 1,
       })
-    }S
+    }
+
+    tl.from(title.current, {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      ease: "sine.out"
+    }, 0)
+
   }, {scope: containerMainCars, dependencies: [mainCars]})
 
   function slideLeft() {
@@ -96,11 +120,14 @@ export default function Home() {
         relative flex flex-row justify-center items-start pt-32 z-10 
         h-dvh w-full overflow-hidden
       `}>
-        <h1 className={`${anton.className}
-          text-[20rem] tracking-widest leading-none
-          relative text-transparent
-          bg-clip-text bg-radial-[at_50%_75%] from-gold/50 via-70% via-neutral-800/50 to-black
-        `}>
+        <h1
+          ref={title}
+          className={`${anton.className}
+            text-[20rem] tracking-widest leading-none
+            relative text-transparent
+            bg-clip-text bg-radial-[at_50%_75%] from-gold/50 via-70% via-neutral-800/50 to-black
+          `}
+        >
           {mainCars && mainCars[0].title}
         </h1>
         <div
