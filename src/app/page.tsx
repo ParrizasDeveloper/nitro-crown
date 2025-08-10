@@ -17,7 +17,8 @@ type MainCar = {
 
 export default function Home() {
   const [mainCars, setMainCars] = useState<MainCar[] | null>(null);
-  const title = useRef(null)
+  const titleElement = useRef<HTMLHeadingElement | null>(null)
+  const lastTitle = useRef<string | null>(null)
   const containerMainCars = useRef(null)
   const direction = useRef<"next" | "prev" | null>(null)
   const isAnimating = useRef<boolean>(false)
@@ -36,21 +37,24 @@ export default function Home() {
     }))
 
     setMainCars(cars)
+    lastTitle.current = cars[0].title
   }, [])
 
   useGSAP(() => {
-    if(!mainCars || direction.current === null) { return }
+    if(!mainCars || direction.current === null || isAnimating.current) { return }
     isAnimating.current = true
-    //isAnimating.current = false
+
     const cars: HTMLDivElement[] = gsap.utils.toArray('.mainCar')
     const tl = gsap.timeline({
-      onComplete: () => {isAnimating.current = false}
+      onComplete: () => {
+        isAnimating.current = false
+      }
     })
 
     if(direction.current === "prev") {
-      tl.from(cars, { x: "-100%", ease: "power4.inOut" })
-      tl.from(cars[0], { scale: "0", opacity: 0, ease: "power4.inOut" }, "<=")
-      tl.to(cars[1], { scale: 0, opacity: 0, ease: "power4.inOut" }, "<=")
+      tl.from(cars, { x: "-100%", ease: "power3.inOut", duration: 0.9 })
+      tl.from(cars[0], { scale: "0", opacity: 0, ease: "power3.inOut", duration: 0.9 }, "<=")
+      tl.to(cars[1], { scale: 0, opacity: 0, ease: "power3.inOut", duration: 0.9 }, "<=")
       tl.set(cars[1], { scale: 1, opacity: 1 })
     }
     if(direction.current === "next") {
@@ -58,7 +62,8 @@ export default function Home() {
         x: "100%",
         scale: 0,
         opacity: 0,
-        ease: "power4.inOut" 
+        ease: "power3.inOut" ,
+        duration: 0.9
       })
       tl.fromTo(cars[cars.length - 1], {
         position: "absolute",
@@ -67,22 +72,38 @@ export default function Home() {
         x: "-100%",
         scale: 0,
         opacity: 0,
-        ease: "power4.inOut" 
+        ease: "power3.inOut",
+        duration: 0.9
       }, "<=")
       tl.set(cars[cars.length - 1], {
         position: "relative",
         x: 0,
         scale: 1,
         opacity: 1,
+        duration: 0.9
       })
     }
 
-    tl.from(title.current, {
-      y: 100,
+    tl.to(titleElement.current, {
       opacity: 0,
-      duration: 1,
-      ease: "sine.out"
+      duration: 0.2,
+      onComplete: () => {
+        lastTitle.current = mainCars[0].title
+        if (titleElement.current) {
+          titleElement.current.textContent = lastTitle.current
+        }
+      }
     }, 0)
+    tl.set(titleElement.current, {
+      y: 100,
+      opacity: 0,   
+    }, ">") 
+    tl.to(titleElement.current, {
+      y: 0,
+      opacity: 1,
+      duration: 0.9,
+      ease: "sine.out"
+    }, ">+0.5")
 
   }, {scope: containerMainCars, dependencies: [mainCars]})
 
@@ -101,7 +122,6 @@ export default function Home() {
 
   function slideRight() {
     if(!mainCars || isAnimating.current) { return }
-    isAnimating.current = true
 
     const newArray = [...mainCars]
     const first = newArray.shift()
@@ -121,14 +141,14 @@ export default function Home() {
         h-dvh w-full overflow-hidden
       `}>
         <h1
-          ref={title}
+          ref={titleElement}
           className={`${anton.className}
             text-[20rem] tracking-widest leading-none
             relative text-transparent
             bg-clip-text bg-radial-[at_50%_75%] from-gold/50 via-70% via-neutral-800/50 to-black
           `}
         >
-          {mainCars && mainCars[0].title}
+          {lastTitle.current}
         </h1>
         <div
           ref={containerMainCars}
@@ -149,7 +169,7 @@ export default function Home() {
         <div className={`
           absolute w-[2000px] aspect-square z-10  rounded-full top-[-200px]
           bg-radial from-neutral-700 to-black from-[-25%] to-80% left-1/2 translate-x-[-50%]
-          -rotate-x-80 border-gold/25 border-8
+          -rotate-x-80 border-neutral-500/10 border-8
         `}></div>
         <div 
           className={`absolute left-0 top-1/2 -translate-y-1/2 text-gold/25 z-40 h-1/2 w-[300px] 
