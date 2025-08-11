@@ -1,138 +1,20 @@
 'use client'
 
 import { anton } from "@/styles/fonts";
-import { homeCars } from "@/data/homeCars";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-
-
-type MainCar = {
-  brand: string,
-  title: string,
-  element: React.ReactElement
-}
+import useMainCars from "@/hooks/useMainCars";
+import { useSliderHomeCars } from "@/hooks/gsap/useSliderHomeCars";
 
 export default function Home() {
-  const [mainCars, setMainCars] = useState<MainCar[] | null>(null);
-  const titleElement = useRef<HTMLHeadingElement | null>(null)
-  const lastTitle = useRef<string | null>(null)
-  const containerMainCars = useRef(null)
-  const direction = useRef<"next" | "prev" | null>(null)
-  const isAnimating = useRef<boolean>(false)
+  const { mainCars, direction, isAnimating, lastTitle, slideLeft, slideRight } = useMainCars()
+  const titleElement = useRef<HTMLHeadingElement>(null)
+  const containerMainCars = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const cars = homeCars.map(car => ({
-      brand: car.brand,
-      title: car.model.toUpperCase(),
-      element: <Image
-        src={car.imageBaseURL}
-        width={1776}
-        height={1008}
-        alt={car.name}
-        quality={100}
-      />
-    }))
-
-    setMainCars(cars)
-    lastTitle.current = cars[0].title
-  }, [])
-
-  useGSAP(() => {
-    if(!mainCars || direction.current === null || isAnimating.current) { return }
-    isAnimating.current = true
-
-    const cars: HTMLDivElement[] = gsap.utils.toArray('.mainCar')
-    const tl = gsap.timeline({
-      onComplete: () => {
-        isAnimating.current = false
-      }
-    })
-
-    if(direction.current === "prev") {
-      tl.from(cars, { x: "-100%", ease: "power3.inOut", duration: 0.9 })
-      tl.from(cars[0], { scale: "0", opacity: 0, ease: "power3.inOut", duration: 0.9 }, "<=")
-      tl.to(cars[1], { scale: 0, opacity: 0, ease: "power3.inOut", duration: 0.9 }, "<=")
-      tl.set(cars[1], { scale: 1, opacity: 1 })
-    }
-    if(direction.current === "next") {
-      tl.from(cars.slice(0, cars.length - 1), {
-        x: "100%",
-        scale: 0,
-        opacity: 0,
-        ease: "power3.inOut" ,
-        duration: 0.9
-      })
-      tl.fromTo(cars[cars.length - 1], {
-        position: "absolute",
-        left: 0,
-      }, {
-        x: "-100%",
-        scale: 0,
-        opacity: 0,
-        ease: "power3.inOut",
-        duration: 0.9
-      }, "<=")
-      tl.set(cars[cars.length - 1], {
-        position: "relative",
-        x: 0,
-        scale: 1,
-        opacity: 1,
-        duration: 0.9
-      })
-    }
-
-    tl.to(titleElement.current, {
-      opacity: 0,
-      duration: 0.2,
-      onComplete: () => {
-        lastTitle.current = mainCars[0].title
-        if (titleElement.current) {
-          titleElement.current.textContent = lastTitle.current
-        }
-      }
-    }, 0)
-    tl.set(titleElement.current, {
-      y: 100,
-      opacity: 0,   
-    }, ">") 
-    tl.to(titleElement.current, {
-      y: 0,
-      opacity: 1,
-      duration: 0.9,
-      ease: "sine.out"
-    }, ">+0.5")
-
-  }, {scope: containerMainCars, dependencies: [mainCars]})
-
-  function slideLeft() {
-    if(!mainCars || isAnimating.current) { return }
-
-    const newArray = [...mainCars]
-    const last = newArray.pop()
-    if(last) {
-      newArray.unshift(last)
-    }
-
-    setMainCars(newArray)
-    direction.current = "prev"
-  }
-
-  function slideRight() {
-    if(!mainCars || isAnimating.current) { return }
-
-    const newArray = [...mainCars]
-    const first = newArray.shift()
-    if (first) {
-      newArray.push(first)
-    }
-
-    setMainCars(newArray)
-    direction.current = "next"
-  }
-
+  useSliderHomeCars({
+    mainCars, direction, isAnimating, lastTitle, containerMainCars, titleElement
+  })
 
   return (
     <>
@@ -157,11 +39,17 @@ export default function Home() {
           `}
         >
           {mainCars?.map(car => (
-            <div key={car.title} className="mainCar w-full shrink-0">
+            <div key={car.model} className="mainCar w-full shrink-0">
               <div
                 className={`w-[1400px] mx-auto`}
               >
-                {car.element}
+                <Image
+                  src={car.imageBaseURL}
+                  width={1776}
+                  height={1008}
+                  alt={car.name}
+                  quality={100}
+                />
               </div>
             </div>
           ))}

@@ -1,4 +1,7 @@
-export const homeCars = [
+import { MainCar } from "@/lib/definitions";
+
+
+export const homeCars: MainCar[] = [
     {
         name: "Lamborghini Huracan",
         brand: "Lamborghini",
