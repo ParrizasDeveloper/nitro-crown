@@ -30,7 +30,7 @@ export default function Home() {
             bg-clip-text bg-radial-[at_50%_75%] from-gold/50 via-70% via-neutral-800/50 to-black
           `}
         >
-          {lastTitle.current}
+          {lastTitle.current?.toUpperCase()}
         </h1>
         <div
           ref={containerMainCars}
@@ -41,7 +41,7 @@ export default function Home() {
           {mainCars?.map(car => (
             <div key={car.model} className="mainCar w-full shrink-0">
               <div
-                className={`w-[1400px] mx-auto`}
+                className={` mx-auto 2xl:w-[1400px] xl:w-[1000px]`}
               >
                 <Image
                   src={car.imageBaseURL}
@@ -55,10 +55,11 @@ export default function Home() {
           ))}
         </div>
         <div className={`
-          absolute w-[2000px] aspect-square z-10  rounded-full top-[-200px]
+          absolute 2xl:w-[2000px] aspect-square z-10  rounded-full top-[-200px]
           bg-radial from-neutral-700 to-black from-[-25%] to-80% left-1/2 translate-x-[-50%]
           -rotate-x-80 border-neutral-500/10 border-8
         `}></div>
+        
         <div 
           className={`absolute left-0 top-1/2 -translate-y-1/2 text-gold/25 z-40 h-1/2 w-[300px] 
             flex justify-center items-center cursor-pointer

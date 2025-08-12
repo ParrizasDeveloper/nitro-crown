@@ -72,7 +72,7 @@ export function useSliderHomeCars({
             onComplete: () => {
                 lastTitle.current = mainCars[0].model
                 if (titleElement.current) {
-                    titleElement.current.textContent = lastTitle.current
+                    titleElement.current.textContent = lastTitle.current.toUpperCase()
                 }
             }
         }, 0)
@@ -83,7 +83,7 @@ export function useSliderHomeCars({
         tl.to(titleElement.current, {
             y: 0,
             opacity: 1,
-            duration: 0.9,
+            duration: 0.5,
             ease: "sine.out"
         }, ">+0.5")
 
