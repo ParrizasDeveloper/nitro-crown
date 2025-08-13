@@ -77,14 +77,14 @@ export function useSliderHomeCars({
             }
         }, 0)
         tl.set(titleElement.current, {
-            y: 100,
+            y: 50,
             opacity: 0,
         }, ">")
         tl.to(titleElement.current, {
             y: 0,
             opacity: 1,
             duration: 0.5,
-            ease: "sine.out"
+            ease: "power1.out"
         }, ">+0.5")
 
     }, { scope: containerMainCars, dependencies: [mainCars] })

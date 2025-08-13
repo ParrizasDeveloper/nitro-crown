@@ -25,9 +25,9 @@ export default function Home() {
         <h1
           ref={titleElement}
           className={`${anton.className}
-            text-[20rem] tracking-widest leading-none
-            relative text-transparent
-            bg-clip-text bg-radial-[at_50%_75%] from-gold/50 via-70% via-neutral-800/50 to-black
+            2xl:text-[18rem] 2xl:top-0 tracking-widest leading-none relative text-transparent bg-clip-text 
+            bg-radial-[at_50%_75%] from-gold/50 via-70% via-neutral-800/50 to-black
+            xl:text-[15rem] xl:top-[100px] lg:text-[12rem] lg:top-[210px]
           `}
         >
           {lastTitle.current?.toUpperCase()}
@@ -41,7 +41,10 @@ export default function Home() {
           {mainCars?.map(car => (
             <div key={car.model} className="mainCar w-full shrink-0">
               <div
-                className={` mx-auto 2xl:w-[1400px] xl:w-[1000px]`}
+                className={`
+                  relative mx-auto 2xl:w-[1400px] 2xl:top-[10px] xl:w-[900px] 
+                  xl:top-[110px] lg:w-[600px] lg:top-[215px]
+                  `}
               >
                 <Image
                   src={car.imageBaseURL}
@@ -55,11 +58,14 @@ export default function Home() {
           ))}
         </div>
         <div className={`
-          absolute 2xl:w-[2000px] aspect-square z-10  rounded-full top-[-200px]
+          absolute 2xl:w-[2000px] aspect-square z-10  rounded-full 2xl:top-[-200px]
           bg-radial from-neutral-700 to-black from-[-25%] to-80% left-1/2 translate-x-[-50%]
-          -rotate-x-80 border-neutral-500/10 border-8
+          -rotate-x-80 border-neutral-500/10 border-8 xl:w-[1400px] xl:top-[0]
+          lg:w-[1100px]
         `}></div>
         
+
+
         <div 
           className={`absolute left-0 top-1/2 -translate-y-1/2 text-gold/25 z-40 h-1/2 w-[300px] 
             flex justify-center items-center cursor-pointer
