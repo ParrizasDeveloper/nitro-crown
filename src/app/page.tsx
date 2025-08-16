@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useMainCars from "@/hooks/useMainCars";
 import { useSliderHomeCars } from "@/hooks/gsap/useSliderHomeCars";
+import { ArrowLeft, ArrowRight } from "@/assets/arrows";
 
 export default function Home() {
   const { mainCars, direction, isAnimating, lastTitle, slideLeft, slideRight } = useMainCars()
@@ -19,7 +20,7 @@ export default function Home() {
   return (
     <>
       <section className={`
-        felx content-center pt-32 z-10 h-dvh w-full overflow-hidden
+        felx content-center pt-32 z-10 h-dvh w-full overflow-hidden 2xl:min-h-[1000px]
       `}>
         <div className={`
           relative flex flex-col justify-center items-center 2xl:h-[888px] xl:h-[700px]
@@ -72,28 +73,15 @@ export default function Home() {
           <div className={`
             relative lg:absolute z-30 flex justify-center gap-15 lg:gap-0 lg:justify-between w-full lg:px-10
           `}>
-              <div
-                className={`
-                  relative text-gold/25 z-40 flex justify-center items-center cursor-pointer
-                `}
+              <ArrowLeft
                 onClick={slideLeft}
-              >
-                <ChevronLeft
-                  size={100}
-                  className="stroke-1"
-                />
-              </div>
-              <div
-                className={`
-                  relative text-gold/25 z-40 flex justify-center items-center cursor-pointer
-                `}
+                onMouseEnter={}
+                className="h-20 cursor-pointer"
+              />
+              <ArrowRight
                 onClick={slideRight}
-              >
-                <ChevronRight
-                  size={100}
-                  className="stroke-1"
-                />
-              </div>
+                className="h-20 cursor-pointer"
+              />
           </div>
         </div>
       </section>
