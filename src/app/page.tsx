@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <section className={`
-        felx content-center pt-32 z-10 h-dvh w-full overflow-hidden 2xl:min-h-[1000px]
+        felx content-center pt-32 z-10 min-h-dvh w-full overflow-hidden 2xl:min-h-[1000px]
       `}>
         <div className={`
           relative flex flex-col justify-center items-center 2xl:h-[888px] xl:h-[700px]
@@ -75,12 +75,17 @@ export default function Home() {
           `}>
               <ArrowLeft
                 onClick={slideLeft}
-                onMouseEnter={}
-                className="h-20 cursor-pointer"
+                className={`
+                  h-20 cursor-pointer text-neutral-500 hover:text-white hover:scale-110 transition 
+                  duration-150
+                `}
               />
               <ArrowRight
                 onClick={slideRight}
-                className="h-20 cursor-pointer"
+                className={`
+                  h-20 cursor-pointer text-neutral-500 hover:text-white hover:scale-110 transition 
+                  duration-150 lg:mr-10
+                `}
               />
           </div>
         </div>
