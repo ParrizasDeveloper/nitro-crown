@@ -3,7 +3,6 @@
 import { anton } from "@/styles/fonts";
 import { useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import useMainCars from "@/hooks/useMainCars";
 import { useSliderHomeCars } from "@/hooks/gsap/useSliderHomeCars";
 import { ArrowLeft, ArrowRight } from "@/assets/arrows";

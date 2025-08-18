@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HeaderNav() {
     return (
-        <header className="fixed top-0 w-full h-28 p-4 z-20">
+        <header className="fixed top-0 w-full h-28 p-4 z-100">
             <nav className={
                 `relative text-contrast flex h-full justify-between items-center
                 m-auto`
@@ -43,8 +43,6 @@ export default function HeaderNav() {
                     
                 </div>
             </nav>
-            
-            
         </header>
     );
 }
