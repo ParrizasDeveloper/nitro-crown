@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import clsx from 'clsx'
 import useNavLinksHover from "@/hooks/gsap/useNavLinksHover";
 
-export default function NavLinks() {
+export default function NavLinks({className}: {className: string}) {
     const pathName = usePathname();
     const {
         actualHover,
@@ -31,9 +31,10 @@ export default function NavLinks() {
     ]
 
     return (
-        <section className="bg-black/60 relative rounded-3xl h-full p-2 backdrop-blur-xl"
-            
-        >
+        <section className={`
+            ${className}
+            bg-black/60 relative rounded-3xl h-full p-2 backdrop-blur-xl
+        `}>
             <div 
                 ref={hoverDiv} 
                 className={`absolute border-2 border-neutral-500/50 w-full h-full top-0 

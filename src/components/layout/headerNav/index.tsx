@@ -21,10 +21,13 @@ export default function HeaderNav() {
                         priority
                     />
                 </div>
-                <NavLinks />
+                <NavLinks className="hidden lg:block" />
                 <div 
-                    className={`h-full w-[150px] rounded-3xl text-center 
-                    flex justify-center items-center`}
+                    className={`
+                        hidden
+                        h-full w-[150px] rounded-3xl text-center 
+                        lg:flex justify-center items-center
+                    `}
                 >
                     <div
                         className={`group transition-all cursor-pointer rounded-2xl p-2
@@ -40,7 +43,11 @@ export default function HeaderNav() {
                             `}
                         />
                     </div>
+                </div>
+                <div className={`
                     
+                `}>
+
                 </div>
             </nav>
         </header>
