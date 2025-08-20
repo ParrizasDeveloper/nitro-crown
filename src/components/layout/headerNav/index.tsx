@@ -1,3 +1,4 @@
+import { SideNavButton } from "@/components/layout/headerNav/sideNavButton";
 import NavLinks from "@/components/ui/NavLinks";
 import { User as UserIcon } from "lucide-react";
 import Image from "next/image";
@@ -24,30 +25,30 @@ export default function HeaderNav() {
                 <NavLinks className="hidden lg:block" />
                 <div 
                     className={`
-                        hidden
                         h-full w-[150px] rounded-3xl text-center 
-                        lg:flex justify-center items-center
+                        flex justify-center items-center
                     `}
                 >
                     <div
-                        className={`group transition-all cursor-pointer rounded-2xl p-2
+                        className={`hidden lg:block relative group transition-all cursor-pointer rounded-2xl p-2
                             border-2 border-neutral-700/0 hover:border-neutral-700/50
-                            hover:duration-0
+                            hover:duration-0 h-16 w-16
                         `}
                     >
                         <UserIcon
                             color="#B0B0B0"
-                            size={50}
                             className={`stroke-1 group-hover:stroke-[1.5] hover:duration-0
-                                transition-all    
+                                transition-all size-full   
                             `}
                         />
                     </div>
-                </div>
-                <div className={`
-                    
-                `}>
-
+                    <div className={`
+                        flex lg:hidden relative group transition-all cursor-pointer rounded-2xl p-2
+                        border-2 border-neutral-700/0 hover:border-neutral-700/50
+                        hover:duration-0 h-16 w-16
+                    `}>
+                        <SideNavButton />
+                    </div>
                 </div>
             </nav>
         </header>
