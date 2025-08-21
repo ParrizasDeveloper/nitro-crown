@@ -12,3 +12,7 @@
 * {
     box-sizing: border-box;
 }
+
+body.no-scroll {
+    overflow: hidden;
+}

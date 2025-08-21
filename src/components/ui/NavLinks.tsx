@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import clsx from 'clsx'
 import useNavLinksHover from "@/hooks/gsap/useNavLinksHover";
+import { links } from "@/data/sections";
 
 export default function NavLinks({className}: {className: string}) {
     const pathName = usePathname();
@@ -15,20 +16,7 @@ export default function NavLinks({className}: {className: string}) {
         animationOut
     } = useNavLinksHover()
     
-    const links = [
-        {
-            name: 'Home',
-            link: '/',
-        },
-        {
-            name: 'Vehicles',
-            link: '/vehicles'
-        },
-        {
-            name: 'About Us',
-            link: '/about'
-        }
-    ]
+    
 
     return (
         <section className={`
