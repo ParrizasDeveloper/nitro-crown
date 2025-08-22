@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import NavUserButton from "./userButton";
 
 export default function HeaderNav() {
-    const [sideNavOpen, setSideNavOpen] = useState(false)
+    const [sideNavOpen, setSideNavOpen] = useState<boolean>(false)
 
     useEffect(() => {
         if(sideNavOpen) {
@@ -56,12 +56,12 @@ export default function HeaderNav() {
                             `}
                             onClick={toggleSideNav}
                         >
-                            <SideNavButton />
+                            <SideNavButton open={sideNavOpen} />
                         </div>
                     </div>
                 </nav>
             </header>
-            <SideNav open />
+            <SideNav open={sideNavOpen} />
         </>
     );
 }
