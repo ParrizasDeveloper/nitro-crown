@@ -3,17 +3,24 @@ import { SideNavButton } from "@/components/layout/headerNav/sideNavButton";
 import NavLinks from "@/components/ui/NavLinks";
 import Image from "next/image";
 import SideNav from "./sideNav";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NavUserButton from "./userButton";
 
 export default function HeaderNav() {
     const [sideNavOpen, setSideNavOpen] = useState<boolean>(false)
+    const scrollbarWidth = useRef<number | null>(null)
+
+    useEffect(() => {
+        scrollbarWidth.current = window.innerWidth - document.documentElement.clientWidth
+    }, [])
 
     useEffect(() => {
         if(sideNavOpen) {
             document.body.classList.add("no-scroll")
+            document.body.querySelector("#main")?.classList.add(`pr-[${scrollbarWidth.current}px]`)
         } else {
             document.body.classList.remove("no-scroll")
+            document.body.querySelector("#main")?.classList.remove(`pr-[${scrollbarWidth.current}px]`)
         }
     }, [sideNavOpen])
 
@@ -23,7 +30,7 @@ export default function HeaderNav() {
 
     return (
         <>
-            <header className="fixed top-0 w-full h-28 p-4 z-200">
+            <header className="fixed top-0 w-dvw h-28 p-4 z-200">
                 <nav className={
                     `relative text-contrast flex h-full justify-between items-center
                 m-auto`

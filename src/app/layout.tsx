@@ -22,7 +22,7 @@ export default function RootLayout({
       <html lang="es">
         <body className={`${roboto.className} relative text-contrast bg-black`}>
           <HeaderNav />
-          <main>
+          <main id="main">
             {children}
           </main>
         </body>

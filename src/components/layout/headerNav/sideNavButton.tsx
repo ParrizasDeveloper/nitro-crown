@@ -11,8 +11,8 @@ export function SideNavButton({open}: {open: boolean}) {
     useGSAP(() => {
         tl.current = gsap.timeline({ paused: true })
         tl.current
-            .to('#topLine', { duration: 0.3, morphSVG: "#ctbr" })
-            .to('#midLine', { duration: 0.3, opacity: 0, morphSVG: "#ctml" }, "<")
+            .to('#midLine', { duration: 0.2, opacity: 0, morphSVG: "#ctml" })
+            .to('#topLine', { duration: 0.3, morphSVG: "#ctbr" }, ">-0.1")
             .to('#botLine', { duration: 0.3, morphSVG: "#cttr" }, "<")  
     }, [])
 
