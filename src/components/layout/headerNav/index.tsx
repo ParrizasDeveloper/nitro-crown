@@ -9,20 +9,11 @@ import NavUserButton from "./userButton";
 export default function HeaderNav() {
     const [sideNavOpen, setSideNavOpen] = useState<boolean>(false)
     const scrollbarWidth = useRef<number | null>(null)
-
+    
     useEffect(() => {
         scrollbarWidth.current = window.innerWidth - document.documentElement.clientWidth
     }, [])
-
-    useEffect(() => {
-        if(sideNavOpen) {
-            document.body.classList.add("no-scroll")
-            document.body.querySelector("#main")?.classList.add(`pr-[${scrollbarWidth.current}px]`)
-        } else {
-            document.body.classList.remove("no-scroll")
-            document.body.querySelector("#main")?.classList.remove(`pr-[${scrollbarWidth.current}px]`)
-        }
-    }, [sideNavOpen])
+    
 
     function toggleSideNav() {
         setSideNavOpen(!sideNavOpen)
@@ -68,7 +59,12 @@ export default function HeaderNav() {
                     </div>
                 </nav>
             </header>
-            <SideNav open={sideNavOpen} />
+            {
+                scrollbarWidth.current && (
+                    <SideNav open={sideNavOpen} scrollbarWidth={scrollbarWidth.current} />
+                )
+            }
+            
         </>
     );
 }

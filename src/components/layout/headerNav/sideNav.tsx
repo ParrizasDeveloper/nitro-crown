@@ -6,16 +6,20 @@ import gsap from "gsap"
 import { useRef } from "react"
 
 
-export default function SideNav({open}: {open: boolean}) {
+export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollbarWidth: number }) {
     const tl = useRef<gsap.core.Timeline | null>(null)
     const container = useRef<HTMLDivElement | null>(null)
 
     useGSAP(() => {
         tl.current = gsap.timeline({paused: true})
         tl.current
+            .set("body", { overflow: "hidden" })
+            .set("#main", { paddingRight: `${scrollbarWidth}px` })
             .to("#responsiveNav", {
                 x: "-100%",
+                ease: "expo"
             })
+            
     }, [])
 
     useGSAP(() => {
@@ -32,7 +36,7 @@ export default function SideNav({open}: {open: boolean}) {
             ref={container}
             className={`
                 ${anton.className}
-                flex
+                flex left-full
                 flex-col lg:hidden fixed w-dvw h-full z-100 bg-neutral-950/99 backdrop-blur-sm
                 justify-center items-center leading-20 sm:leading-24 text-neutral-200
             `}
