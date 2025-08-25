@@ -26,7 +26,7 @@ export default function HeaderNav() {
                     `relative text-contrast flex h-full justify-between items-center
                 m-auto`
                 }>
-                    <div className={` relative h-full w-[150px] min-w-[150px] 
+                    <div className={`relative h-full w-[150px] min-w-[150px] 
                     cursor-pointer rounded-3xl py-3 px-7`
                     }>
                         <Image
@@ -60,7 +60,7 @@ export default function HeaderNav() {
                 </nav>
             </header>
             {
-                scrollbarWidth.current && (
+                scrollbarWidth.current !== null && (
                     <SideNav open={sideNavOpen} scrollbarWidth={scrollbarWidth.current} />
                 )
             }

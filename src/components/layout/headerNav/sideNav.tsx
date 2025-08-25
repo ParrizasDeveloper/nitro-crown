@@ -7,26 +7,28 @@ import { useRef } from "react"
 
 
 export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollbarWidth: number }) {
-    const tl = useRef<gsap.core.Timeline | null>(null)
+//    const tl = useRef<gsap.core.Timeline | null>(null)
     const container = useRef<HTMLDivElement | null>(null)
 
     useGSAP(() => {
-        tl.current = gsap.timeline({paused: true})
-        tl.current
-            .set("body", { overflow: "hidden" })
-            .set("#main", { paddingRight: `${scrollbarWidth}px` })
-            .to("#responsiveNav", {
-                x: "-100%",
-                ease: "expo"
-            })
-            
-    }, [])
-
-    useGSAP(() => {
+        const tl = gsap.timeline()
         if(open) {
-            tl.current?.play()
+            tl
+                .set("body", { overflow: "hidden" })
+                .set("#main", { paddingRight: `${scrollbarWidth}px` })
+                .to("#responsiveNav", {
+                    x: "-100%",
+                    ease: "power4.out"
+                })
         } else {
-            tl.current?.reverse()
+            tl
+                .set("body", { overflow: "auto" })
+                .set("#main", { paddingRight: 0 })
+                .to("#responsiveNav", {
+                    x: "100%",
+                    ease: "power2.out"
+                })
+
         }
     }, [open])
 
@@ -37,14 +39,14 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
             className={`
                 ${anton.className}
                 flex left-full
-                flex-col lg:hidden fixed w-dvw h-full z-100 bg-neutral-950/99 backdrop-blur-sm
+                flex-col lg:hidden fixed w-dvw h-full z-100 bg-neutral-950 backdrop-blur-sm
                 justify-center items-center leading-20 sm:leading-24 text-neutral-200
             `}
         >
             <Link 
                 href={""} 
                 className={`text-[clamp(2rem,6vw,3rem)]`}
-            >PROFILE</Link>
+            >Profile</Link>
             {
                links.map(link => (
                     <Link 
@@ -52,7 +54,7 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
                         href={link.link} 
                         key={link.name}
                     >
-                        {link.name.toUpperCase()}
+                        {link.name}
                     </Link>
                )) 
             }
