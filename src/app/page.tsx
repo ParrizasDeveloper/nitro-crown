@@ -42,7 +42,7 @@ export default function Home() {
             relative lg:absolute w-full flex lg:top-[80px] z-20
           `}
           >
-            {mainCars?.map(car => (
+            {mainCars?.map((car, i) => (
               <div key={car.model} className="mainCar w-full shrink-0">
                 <div
                   className={`
@@ -56,6 +56,7 @@ export default function Home() {
                     height={1008}
                     alt={car.name}
                     quality={100}
+                    priority={i === 0}
                   />
                 </div>
               </div>

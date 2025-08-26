@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import clsx from 'clsx'
 import useNavLinksHover from "@/hooks/gsap/useNavLinksHover";
 import { links } from "@/data/sections";
+import { cloneElement } from "react";
 
 export default function NavLinks({className}: {className: string}) {
     const pathName = usePathname();
@@ -49,7 +50,10 @@ export default function NavLinks({className}: {className: string}) {
                         }}
                         onMouseEnter={animationHover}
                     >
-                        <p className="flex items-center px-10 h-full z-20 relative">{link.name.toUpperCase()}</p>
+                        <p className="flex gap-1.5 items-center px-10 h-full z-20 relative">
+                            {cloneElement(link.icon, { className: "w-[1em] h-[1em]" })}
+                            <span>{link.name.toUpperCase()}</span>
+                        </p>
                     </Link>
                 ))}
             </div>

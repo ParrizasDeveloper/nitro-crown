@@ -1,9 +1,10 @@
 import { links } from "@/data/sections"
 import Link from "next/link"
-import { anton } from "@/styles/fonts"
+import { chillax } from "@/styles/fonts"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
-import { useRef } from "react"
+import { cloneElement, useRef } from "react"
+import { User } from "lucide-react"
 
 
 export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollbarWidth: number }) {
@@ -37,24 +38,28 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
             id="responsiveNav"
             ref={container}
             className={`
-                ${anton.className}
-                flex left-full
+                ${chillax.className}
+                flex left-full gap text-[clamp(2rem,6vw,3rem)]
                 flex-col lg:hidden fixed w-dvw h-full z-100 bg-neutral-950 backdrop-blur-sm
                 justify-center items-center leading-20 sm:leading-24 text-neutral-200
+                
             `}
         >
             <Link 
-                href={""} 
-                className={`text-[clamp(2rem,6vw,3rem)]`}
-            >Profile</Link>
+                href={""}
+                className="p-2 rounded-2xl bg-neutral-400 text-neutral-950 mb-5"
+            >
+                <User className="w-[2em] h-[2em] stroke-2" />
+            </Link>
             {
                links.map(link => (
                     <Link 
-                        className={`text-[clamp(2rem,6vw,3rem)]`} 
+                        className={`flex items-center gap-5`} 
                         href={link.link} 
                         key={link.name}
                     >
-                        {link.name}
+                        {cloneElement(link.icon, { className: "w-[1em] h-[1em]" })}
+                        <span>{link.name.toUpperCase()}</span>
                     </Link>
                )) 
             }
