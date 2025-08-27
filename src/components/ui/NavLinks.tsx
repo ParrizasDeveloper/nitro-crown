@@ -41,7 +41,7 @@ export default function NavLinks({className}: {className: string}) {
                         className={clsx(
                             ` relative hover:text-contrast transition-colors duration-150`,
                             {
-                                'text-contrast': pathName === link.link,
+                                'text-white': pathName === link.link,
                                 'text-neutral-500': pathName !== link.link,
                             }
                         )}

@@ -15,3 +15,9 @@ export const chillax = localFont({
     variable: "--font-chillax",
     display: "swap"
 })
+
+export const azadliq = localFont({
+    src: "../assets/fonts/AZADLIQ.woff2",
+    variable: "--font-azadliq",
+    display: "swap"
+})

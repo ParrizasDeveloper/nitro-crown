@@ -29,7 +29,7 @@ export default function Home() {
             ref={titleElement}
             className={`${anton.className}
             relative lg:absolute 2xl:text-[18rem] 2xl:top-0 tracking-widest leading-none text-transparent 
-            bg-clip-text bg-radial-[at_50%_75%] from-gold/50 via-70% via-neutral-800/50 
+            bg-clip-text bg-radial-[at_50%_75%] from-secondary/50 via-70% via-neutral-800/50 
             to-black xl:text-[15rem] xl:top-[100px] lg:text-[12rem] lg:top-[100px] md:text-[10rem]
             sm:text-[8rem] text-[5rem]
           `}
@@ -76,14 +76,14 @@ export default function Home() {
               <ArrowLeft
                 onClick={slideLeft}
                 className={`
-                  h-20 cursor-pointer text-neutral-500 hover:text-white hover:scale-110 transition 
+                  h-20 cursor-pointer text-white hover:text-secondary hover:scale-110 transition 
                   duration-150
                 `}
               />
               <ArrowRight
                 onClick={slideRight}
                 className={`
-                  h-20 cursor-pointer text-neutral-500 hover:text-white hover:scale-110 transition 
+                  h-20 cursor-pointer text-white hover:text-secondary hover:scale-110 transition 
                   duration-150 lg:mr-10
                 `}
               />

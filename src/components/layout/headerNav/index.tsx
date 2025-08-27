@@ -30,7 +30,7 @@ export default function HeaderNav() {
                     cursor-pointer rounded-3xl py-3 px-7`
                     }>
                         <Image
-                            src='/images/NC.png'
+                            src='/images/NCLogo.png'
                             width={1000}
                             height={1000}
                             alt='Nitro Crown Logo from header'
