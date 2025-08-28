@@ -41,7 +41,7 @@ export default function HeaderNav() {
                     <NavLinks className="hidden lg:block" />
                     <div
                         className={`
-                        h-full w-[150px] rounded-3xl text-center 
+                        h-full w-[100px] lg:w-[150px] rounded-3xl text-center 
                         flex justify-center items-center
                     `}
                     >

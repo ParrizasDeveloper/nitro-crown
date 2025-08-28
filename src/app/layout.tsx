@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="es">
-        <body className={`${roboto.className} relative text-contrast bg-black`}>
+        <body className={`${roboto.className} relative text-neutral-light bg-black`}>
           <HeaderNav />
           <main id="main">
             {children}
