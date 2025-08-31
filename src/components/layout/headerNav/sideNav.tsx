@@ -73,6 +73,9 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
             color: "#D4AF37",
             duration: 1,
         })
+        gsap.to("#sideNavLinks > .sideNavLink:not(:hover)", {
+            opacity: 0.3
+        })
     }
 
     function handleLeaveLink(event: React.MouseEvent<HTMLAnchorElement>) {
@@ -83,6 +86,9 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
         gsap.to(event.currentTarget.querySelector(".index"), {
             color: "#FAFAFA",
             duration: 1,
+        })
+        gsap.to("#sideNavLinks > .sideNavLink", {
+            opacity: 1
         })
     }
 
