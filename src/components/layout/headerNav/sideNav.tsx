@@ -30,10 +30,9 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
                 })
             
             navWords.current.forEach((word, i) => {
-                tl.from(word.querySelectorAll("span.navlink-name > div > span"), {
+                tl.from(word.querySelectorAll("span.navlink-name div.letter-nav > span"), {
                     left: "-100%",
-                    stagger: 0.05,
-                    duration: 0.5,
+                    duration: 1,
                     ease: "power3.out"
                 }, i === 0 ? ">-0.7" : "<+0.1")
                 tl.from(word.querySelector("span.index"), {
@@ -42,7 +41,17 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
                     xPercent: -50,
                 }, "<")
             })
-            
+            tl
+                .from("#navFooter>div", {
+                    width: 0,
+                    opacity: 0,
+                    ease: "power2.out"
+                }, ">-0.8")
+                .from("#navFooter>div>div", {
+                    yPercent: 100,
+                    opacity: 0,
+                    ease: "power2.out"
+                }, ">-0.1")
         } else {
             tl
                 .set("body", { overflow: "auto" })
@@ -52,9 +61,30 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
                     duration: 1,
                     ease: "power2.out"
                 })
-        }
-        
+        } 
     }, [open])
+
+    function handleHoverLink(event: React.MouseEvent<HTMLAnchorElement>) {
+        gsap.to(event.currentTarget.querySelectorAll(".letter-nav"), {
+            yPercent: -100,
+            stagger: 0.02
+        })
+        gsap.to(event.currentTarget.querySelector(".index"), {
+            color: "#D4AF37",
+            duration: 1,
+        })
+    }
+
+    function handleLeaveLink(event: React.MouseEvent<HTMLAnchorElement>) {
+        gsap.to(event.currentTarget.querySelectorAll(".letter-nav"), {
+            yPercent: 0,
+            stagger: 0.02
+        })
+        gsap.to(event.currentTarget.querySelector(".index"), {
+            color: "#FAFAFA",
+            duration: 1,
+        })
+    }
 
     return (
         <div 
@@ -70,20 +100,32 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
             <div className={`
                 absolute w-full h-dvh bg-radial-[at_15%_15%] from-[#878787]/40 from-10%
             `}></div>
-            <div className="flex flex-col h-dvh pt-header">
+            <div className="relative flex flex-col h-dvh pt-header">
                 <div className={`
                     flex w-full flex-2 items-center text-[clamp(4rem,14vmin,7rem)] px-[10vmin]
                     shrink-[4]
                 `}>
                     <nav id="sideNavLinks">
-                        <Link href="" className="sideNavLink flex items-center gap-3">
-                            <span className="index text-[0.3em]">01</span>
+                        <Link 
+                            href="" 
+                            className="sideNavLink grid grid-cols-[0.7ch_auto] items-center gap-3 py-2.5"
+                            onMouseEnter={handleHoverLink}
+                            onMouseLeave={handleLeaveLink}
+                        >
+                            <span 
+                                className="index text-[0.3em] text-neutral-light"
+                            >01</span>
                             <span className="navlink-name flex">
                                 {Array.from("PROFILE").map((char, i) => (
                                     <div key={i} className="relative overflow-hidden">
-                                        <span className="whitespace-pre relative">
-                                            {char}
-                                        </span>
+                                        <div className="relative letter-nav leading-[1em]">
+                                            <span className="whitespace-pre relative">
+                                                {char}
+                                            </span>
+                                            <div className="absolute text-primary">
+                                                {char}
+                                            </div>
+                                        </div>
                                     </div>
                                 ))}
                             </span>
@@ -93,7 +135,9 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
                                 <Link
                                     href={link.link}
                                     key={link.name}
-                                    className="sideNavLink flex items-center gap-3"
+                                    className="sideNavLink grid grid-cols-[0.7ch_auto] items-center gap-3  py-2.5"
+                                    onMouseEnter={handleHoverLink}
+                                    onMouseLeave={handleLeaveLink}
                                 >
                                     <span className="index text-[0.3em]">
                                         {`0${i + 2}`}
@@ -101,9 +145,14 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
                                     <span className="navlink-name flex">
                                         {Array.from(link.name.toUpperCase()).map((char, i) => (
                                             <div key={i} className="relative overflow-hidden">
-                                                <span className="whitespace-pre relative">
-                                                    {char}
-                                                </span>
+                                                <div className="relative letter-nav leading-[1em]">
+                                                    <span className="whitespace-pre relative">
+                                                        {char}
+                                                    </span>
+                                                    <div className="absolute text-primary">
+                                                        {char}
+                                                    </div>
+                                                </div>
                                             </div>
                                         ))}
                                     </span>
