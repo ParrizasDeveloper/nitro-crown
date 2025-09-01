@@ -33,6 +33,7 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
                 tl.from(word.querySelectorAll("span.navlink-name div.letter-nav > span"), {
                     left: "-100%",
                     duration: 1,
+                    stagger: 0.03,
                     ease: "power3.out"
                 }, i === 0 ? ">-0.7" : "<+0.1")
                 tl.from(word.querySelector("span.index"), {
@@ -99,16 +100,16 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
             className={`
                 ${anton.className}
                 h-0 overflow-hidden
-                lg:hidden fixed w-dvw z-100 bg-neutral
+                fixed w-dvw z-100 bg-neutral
                 justify-center items-center leading-[1.2] text-neutral-light
             `}
         >
             <div className={`
-                absolute w-full h-dvh bg-radial-[at_15%_15%] from-[#878787]/40 from-10%
+                absolute w-full h-dvh bg-radial-[at_15%_15%] from-[#5d5d5d] to-black 
             `}></div>
             <div className="relative flex flex-col h-dvh pt-header">
                 <div className={`
-                    flex w-full flex-2 items-center text-[clamp(4rem,14vmin,7rem)] px-[10vmin]
+                    flex w-full flex-2 items-center text-[clamp(4rem,14vmin,7rem)] px-[10%]
                     shrink-[4]
                 `}>
                     <nav id="sideNavLinks">

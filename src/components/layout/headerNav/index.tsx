@@ -38,17 +38,15 @@ export default function HeaderNav() {
                             priority
                         />
                     </div>
-                    <NavLinks className="hidden lg:block" />
                     <div
                         className={`
                         h-full w-[100px] lg:w-[150px] rounded-3xl text-center 
                         flex justify-center items-center
                     `}
                     >
-                        <NavUserButton />
                         <div 
                             className={`
-                                flex lg:hidden relative group transition-all cursor-pointer rounded-2xl p-2
+                                flex relative group transition-all cursor-pointer rounded-2xl p-2
                                 border-2 border-neutral-700/0 hover:border-neutral-700/50
                                 hover:duration-0 h-16 w-16
                             `}

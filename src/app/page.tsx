@@ -29,7 +29,7 @@ export default function Home() {
             ref={titleElement}
             className={`${anton.className}
             relative lg:absolute 2xl:text-[18rem] 2xl:top-0 tracking-widest leading-none text-transparent 
-            bg-clip-text bg-radial-[at_50%_75%] from-primary/60 via-50% via-neutral-800 
+            bg-clip-text bg-radial-[at_50%_75%] from-primary/70 via-90% via-neutral-800 
             to-black xl:text-[15rem] xl:top-[100px] lg:text-[12rem] lg:top-[100px] md:text-[10rem]
             sm:text-[8rem] text-[5rem]
           `}
