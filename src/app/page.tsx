@@ -18,8 +18,15 @@ export default function Home() {
 
   return (
     <>
+      <section className="pt-header z-10 min-h-dvh w-full overflow-hidden 2xl:min-h-[1000px]">
+        <div className={`
+            
+        `}>
+
+        </div>
+      </section>
       <section className={`
-        felx content-center pt-32 z-10 min-h-dvh w-full overflow-hidden 2xl:min-h-[1000px]
+        pt-32 z-10 min-h-dvh w-full overflow-hidden 2xl:min-h-[1000px]
       `}>
         <div className={`
           relative flex flex-col justify-center items-center 2xl:h-[888px] xl:h-[700px]

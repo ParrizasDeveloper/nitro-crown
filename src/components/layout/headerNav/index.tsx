@@ -38,6 +38,7 @@ export default function HeaderNav() {
                             priority
                         />
                     </div>
+                    
                     <div
                         className={`
                         h-full w-[100px] lg:w-[150px] rounded-3xl text-center 
