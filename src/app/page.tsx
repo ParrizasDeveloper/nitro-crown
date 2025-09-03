@@ -18,12 +18,19 @@ export default function Home() {
 
   return (
     <>
-      <section className="pt-header z-10 min-h-dvh w-full overflow-hidden 2xl:min-h-[1000px]">
-        <div className={`
-            
-        `}>
-
-        </div>
+      <section className="relative z-10 h-dvh w-full overflow-hidden 2xl:min-h-[1000px]">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="absolute w-full h-dvh object-cover"
+          >
+            <source src="/videos/interior.webm" type="video/webm" />
+          </video>
+          <div className={`
+            absolute w-full h-1/4 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent
+          `}></div>
       </section>
       <section className={`
         pt-32 z-10 min-h-dvh w-full overflow-hidden 2xl:min-h-[1000px]
