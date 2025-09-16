@@ -1,10 +1,8 @@
 'use client'
 import { SideNavButton } from "@/components/layout/headerNav/sideNavButton";
-import NavLinks from "@/components/ui/NavLinks";
 import Image from "next/image";
 import SideNav from "./sideNav";
 import { useEffect, useRef, useState } from "react";
-import NavUserButton from "./userButton";
 
 export default function HeaderNav() {
     const [sideNavOpen, setSideNavOpen] = useState<boolean>(false)
