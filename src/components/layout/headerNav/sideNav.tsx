@@ -71,8 +71,8 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
             stagger: 0.02
         })
         gsap.to(event.currentTarget.querySelector(".index"), {
-            color: "#D4AF37",
-            duration: 1,
+            color: "#0079f9",
+            duration: 0.5,
         })
         gsap.to("#sideNavLinks > .sideNavLink:not(:hover)", {
             opacity: 0.3
@@ -86,7 +86,7 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
         })
         gsap.to(event.currentTarget.querySelector(".index"), {
             color: "#FAFAFA",
-            duration: 1,
+            duration: 0.5,
         })
         gsap.to("#sideNavLinks > .sideNavLink", {
             opacity: 1
@@ -102,10 +102,11 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
                 h-0 overflow-hidden
                 fixed w-dvw z-100 bg-neutral
                 justify-center items-center leading-[1.2] text-neutral-light
+                text-text
             `}
         >
             <div className={`
-                absolute w-full h-dvh bg-radial-[at_15%_15%] from-[#5d5d5d] to-black 
+                absolute w-full h-dvh bg-gradient-to-br from-base to-primary-dark
             `}></div>
             <div className="relative flex flex-col h-dvh pt-header">
                 <div className={`

@@ -6,7 +6,7 @@ export default function NavFooter() {
         <footer id="navFooter" className={"z-10 flex justify-center"}>
             <div className={`
                 ${roboto.className}
-                h-24 border-t-[1px] border-[#3d3d3d] shrink-1 mx-[5%] px-[10px] items-center
+                h-24 border-t-[1px] border-secondary shrink-1 mx-[5%] px-[10px] items-center
                 font-light flex justify-between w-full
             `}>
                 <div>Nitro Crown</div>
