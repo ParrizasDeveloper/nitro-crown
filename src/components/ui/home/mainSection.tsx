@@ -1,6 +1,6 @@
 'use client'
 
-import { anton } from "@/styles/fonts"
+import { anton, teko } from "@/styles/fonts"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import Image from "next/image"
@@ -58,21 +58,29 @@ export default function MainSection() {
                     src="/images/home/bg_main.webp"
                     alt="Background image about a dealership with sport cars"
                     fill
-                    className="z-0 object-cover"
+                    className="z-0 object-cover hidden md:block"
+                    quality={100}
+                    priority
+                />
+                <Image
+                    src="/images/home/bg_main_mobile.webp"
+                    alt="Background image about a dealership with sport cars"
+                    fill
+                    className="z-0 object-cover md:hidden"
                     quality={100}
                     priority
                 />
             </div>
             <div className={`
-                z-30 text-text text-shadow-[5px_5px_20px_black]/30
-                text-center text-[clamp(7rem,15vw,22rem)]
-                absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-[1em]
+                z-30 text-text text-shadow-[0_0_20px_#014996]
+                text-center text-[clamp(6rem,20vw,30rem)]
+                absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-[0.8em]
             `}>
-                <p>BEYOND</p>
+                <p className="relative top-[0.11em]">BEYOND</p>
                 <div className="text-primary flex justify-center">
                     <div
                         ref={dynamicTitle}
-                        className="h-[1em]"
+                        className="h-[1em] relative top-[0.11em]"
                     >
                         {Array.from(swappingTitles[currentTitle]).map((letter, i) => (
                             <span key={i} className="hidden">{letter}</span>
@@ -80,7 +88,7 @@ export default function MainSection() {
                     </div>
                     <div className={`
                         bg-white w-[0.02em] [animation:blink_1.1s_ease-in-out_infinite]
-                        ml-[0.02em]
+                        ml-[0.02em] shadow-[0_0_10px_#014996]
                     `}></div>
                 </div>
             </div>
