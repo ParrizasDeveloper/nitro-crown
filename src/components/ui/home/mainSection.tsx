@@ -3,8 +3,11 @@
 import { anton, teko } from "@/styles/fonts"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function MainSection() {
     const swappingTitles: string[] = ['LIMITS', 'LUXURY', 'SPEED', 'PERFECTION']
@@ -44,11 +47,11 @@ export default function MainSection() {
     return (
         <section className={`
             ${anton.className}
-            select-none
+            select-none overflow-hidden
             relative z-10 h-dvh w-full
         `}>
             <div className={`
-                relative overflow-hidden w-full h-[calc(100%+200px)]
+                relative overflow-hidden w-full h-full
             `}>
                 <div className={`
                     absolute w-full h-full z-20 
@@ -96,6 +99,10 @@ export default function MainSection() {
                     `}></div>
                 </div>
             </div>
+            <div className={`
+                absolute h-[500px] origin-top-right -rotate-5 w-[110%] right-0
+                bg-primary-dark bottom-0 z-50
+            `}></div>
         </section>
     )
 }

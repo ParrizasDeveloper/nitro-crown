@@ -26,6 +26,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overscroll-behavior: none;
+}
+
 body.no-scroll {
     overflow: hidden;
 }
