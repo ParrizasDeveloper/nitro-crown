@@ -2,16 +2,10 @@
 import { SideNavButton } from "@/components/layout/headerNav/sideNavButton";
 import Image from "next/image";
 import SideNav from "./sideNav";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 export default function HeaderNav() {
     const [sideNavOpen, setSideNavOpen] = useState<boolean>(false)
-    const scrollbarWidth = useRef<number | null>(null)
-    
-    useEffect(() => {
-        scrollbarWidth.current = window.innerWidth - document.documentElement.clientWidth
-    }, [])
-    
 
     function toggleSideNav() {
         setSideNavOpen(!sideNavOpen)
@@ -56,12 +50,7 @@ export default function HeaderNav() {
                     </div>
                 </nav>
             </header>
-            {
-                scrollbarWidth.current !== null && (
-                    <SideNav open={sideNavOpen} scrollbarWidth={scrollbarWidth.current} />
-                )
-            }
-            
+            <SideNav open={sideNavOpen} />   
         </>
     );
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import { useScrollBar } from "@/context/ScrollbarProvider"
 import { anton, teko } from "@/styles/fonts"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -13,11 +14,14 @@ export default function MainSection() {
     const swappingTitles: string[] = ['LIMITS', 'LUXURY', 'SPEED', 'PERFECTION']
     const [currentTitle, setCurrentTitle] = useState<number>(0)
     const dynamicTitle = useRef<HTMLDivElement | null>(null)
-    const timeOutTitle = useRef<NodeJS.Timeout | null>(null)
-    const intervalTitle = useRef<NodeJS.Timeout | null>(null)
+    const {changeScrollbarSize} = useScrollBar()
+
+    useEffect(() => {
+        const size = window.innerWidth - document.documentElement.clientWidth
+        changeScrollbarSize(size)
+    }, [])
 
     useGSAP(() => {
-        console.log("entrando")
         if(!dynamicTitle.current) { return } 
         const tl = gsap.timeline()
         tl.to(dynamicTitle.current.querySelectorAll("span"), {
@@ -47,34 +51,32 @@ export default function MainSection() {
     return (
         <section className={`
             ${anton.className}
-            select-none overflow-hidden
-            relative z-10 h-dvh w-full
+            select-none relative z-10 h-dvh w-full overflow-hidden
         `}>
             <div className={`
-                relative overflow-hidden w-full h-full
-            `}>
-                <div className={`
                     absolute w-full h-full z-20 
                     bg-gradient-to-b from-base/0 to-base
-                `}></div>
-                <Image
-                    src="/images/home/bg_main.webp"
-                    alt="Background image about a dealership with sport cars"
+            `}></div>
+            <div className={`
+                fixed border border-white w-full h-full
+
+            `}>
+                <Image 
+                    src='/images/home/bg_main.webp'
+                    alt="background of the main section with image from the dealership"
                     fill
-                    className="z-0 object-cover hidden xl:block"
-                    quality={100}
-                    priority
-                    
+                    className="object-cover hidden xl:block"
+                    unoptimized
                 />
                 <Image
-                    src="/images/home/bg_main_mobile.webp"
-                    alt="Background image about a dealership with sport cars"
+                    src='/images/home/bg_main_mobile.webp'
+                    alt="background of the main section with image from the dealership"
                     fill
-                    className="z-0 object-cover xl:hidden"
-                    quality={100}
-                    priority
+                    className="object-cover xl:hidden"
+                    unoptimized
                 />
             </div>
+            
             <div className={`
                 z-30 text-text
                 text-center text-[clamp(6rem,20vw,30rem)]
@@ -100,7 +102,7 @@ export default function MainSection() {
                 </div>
             </div>
             <div className={`
-                absolute h-[500px] origin-top-right -rotate-5 w-[110%] right-0
+                absolute w-full border h-full [clip-path:polygon(0_100%,100%_100%,100%_100%,0_100%)]
                 bg-primary-dark bottom-0 z-50
             `}></div>
         </section>

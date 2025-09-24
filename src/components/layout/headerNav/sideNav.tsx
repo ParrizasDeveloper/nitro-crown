@@ -5,11 +5,13 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useLayoutEffect, useRef } from "react"
 import NavFooter from "../footer/navFooter"
+import { useScrollBar } from "@/context/ScrollbarProvider"
 
 
-export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollbarWidth: number }) {
+export default function SideNav({open}: {open: boolean}) {
     const container = useRef<HTMLDivElement | null>(null)
     const navWords = useRef<Element[]>([])
+    const {scrollbarSize: scrollbarWidth} = useScrollBar()
 
     useLayoutEffect(() => {
         const navLinks = document.querySelectorAll("a.sideNavLink")
@@ -18,11 +20,12 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
     }, [])
 
     useGSAP(() => {
+        console.log(scrollbarWidth)
         const tl = gsap.timeline()
         if(open) {
             tl
                 .set("body", { overflow: "hidden" })
-                .set("#main", { paddingRight: `${scrollbarWidth}px` })
+                .set("#main", { marginRight: `${scrollbarWidth}px` })
                 .to("#responsiveNav", {
                     height: "100%",
                     duration: 1,
@@ -56,7 +59,7 @@ export default function SideNav({open, scrollbarWidth}: {open: boolean, scrollba
         } else {
             tl
                 .set("body", { overflow: "auto" })
-                .set("#main", { paddingRight: 0 })
+                .set("#main", { marginRight: 0 })
                 .to("#responsiveNav", {
                     height: 0,
                     duration: 1,
