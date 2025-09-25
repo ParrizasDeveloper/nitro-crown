@@ -22,7 +22,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="es">
         <ScrollbarProvider>
-          <body className={`${roboto.className} relative text-neutral-light bg-base`}>
+          <body className={`
+            ${roboto.className} relative text-neutral-light bg-base
+          `}>
             <HeaderNav />
             <main id="main">
               {children}

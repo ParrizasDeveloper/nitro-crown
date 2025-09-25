@@ -11,9 +11,10 @@ export const anton = Anton({
 })
 
 export const teko = Teko({
-    weight: '300',
+    weight: ['300', '600'],
     subsets: ['latin']
 })
+
 
 export const chillax = localFont({
     src: "../assets/fonts/Chillax.woff2",
