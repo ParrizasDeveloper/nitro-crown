@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import HeaderNav from "@/components/layout/headerNav";
 import { roboto } from "@/styles/fonts";
 import { ScrollbarProvider } from "@/context/ScrollbarProvider";
+import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -22,13 +23,15 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="es">
         <ScrollbarProvider>
-          <body className={`
-            ${roboto.className} relative text-neutral-light bg-base
-          `}>
+          <body>
             <HeaderNav />
-            <main id="main">
-              {children}
-            </main>
+            <SmoothScrollProvider>
+              <main id="main" className={`
+                ${roboto.className} relative text-neutral-light bg-base w-screen
+              `}>
+                {children}
+              </main>
+            </SmoothScrollProvider>
           </body>
         </ScrollbarProvider>
       </html>

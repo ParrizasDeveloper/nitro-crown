@@ -7,6 +7,9 @@ import { useLayoutEffect, useRef } from "react"
 import NavFooter from "../footer/navFooter"
 import { useScrollBar } from "@/context/ScrollbarProvider"
 
+//------------------------------------------------------------------------------
+//ARREGLAR TOGGLE DE NAVEGACIÓN AL CLICAR RÁPIDAMENTE VARIAS VECES CONSECUTIVAS!!
+//------------------------------------------------------------------------------
 
 export default function SideNav({open}: {open: boolean}) {
     const container = useRef<HTMLDivElement | null>(null)
@@ -20,7 +23,6 @@ export default function SideNav({open}: {open: boolean}) {
     }, [])
 
     useGSAP(() => {
-        console.log(scrollbarWidth)
         const tl = gsap.timeline()
         if(open) {
             tl

@@ -14,7 +14,7 @@ export default function MainSection() {
     const swappingTitles: string[] = ['LIMITS', 'LUXURY', 'SPEED', 'PERFECTION']
     const [currentTitle, setCurrentTitle] = useState<number>(0)
     const dynamicTitle = useRef<HTMLDivElement | null>(null)
-    const {changeScrollbarSize} = useScrollBar()
+    const {changeScrollbarSize, scrollbarSize} = useScrollBar()
 
     useEffect(() => {
         const size = window.innerWidth - document.documentElement.clientWidth
@@ -49,49 +49,66 @@ export default function MainSection() {
     }, {dependencies: [currentTitle]})
 
     useGSAP(() => {
-        gsap.to("#footerMainSection", {
+        gsap.to("#footer-main-section", {
             scrollTrigger: {
-                trigger: '#footerMainSection',
+                trigger: '#footer-main-section',
                 start: 'bottom bottom',
                 end: 'bottom top',
-                scrub: 1,
+                scrub: 0
             },
-            clipPath: 'polygon(0 70%, 100% 20%, 100% 100%, 0 100%)',
-            ease: 'none'
+            clipPath: 'polygon(0 80%, 100% 50%, 100% 100%, 0 100%)',
+        })
+
+        gsap.to("#title-main-section-home", {
+            scrollTrigger: {
+                trigger: "#title-main-section-home",
+                start: 0,
+                end: "+=400",
+                scrub: true
+            },
+            scale: "0.6",
         })
     }, [])
 
     return (
         <section className={`
             ${anton.className}
-            select-none relative z-10 h-dvh w-full overflow-hidden isolate
+            select-none relative z-10 h-dvh w-screen
         `}>
-            <div className={`
-                fixed w-screen h-full
+            <div id="main-section-container-home" className={`
+                relative top-0 w-screen h-full
             `}>
-                <div className={`
-                    absolute w-full h-full z-20 
-                    bg-gradient-to-b from-base/0 to-base
-                `}></div>
-                <Image 
-                    src='/images/home/bg_main.webp'
-                    alt="background of the main section with image from the dealership"
-                    fill
-                    className="object-cover hidden xl:block"
-                    unoptimized
-                />
-                <Image
-                    src='/images/home/bg_main_mobile.webp'
-                    alt="background of the main section with image from the dealership"
-                    fill
-                    className="object-cover xl:hidden"
-                    unoptimized
-                />
-                <div className={`
-                    z-30 text-text
-                    text-center text-[clamp(6rem,20vw,30rem)]
-                    absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-[0.8em]
-                `}>
+                <div id="bg-main-section-home" className="relative w-full h-full" data-speed="0.7">
+                    <div className={`
+                        absolute w-full h-full z-20 
+                        bg-gradient-to-b from-base/0 to-base
+                    `}></div>
+                    <Image
+                        src='/images/home/bg_main.webp'
+                        alt="background of the main section with image from the dealership"
+                        fill
+                        className="object-cover hidden xl:block"
+                        unoptimized
+                    />
+                    <Image
+                        src='/images/home/bg_main_mobile.webp'
+                        alt="background of the main section with image from the dealership"
+                        fill
+                        className="object-cover xl:hidden"
+                        unoptimized
+                    />
+                </div>
+                
+                <div
+                    id="title-main-section-home"
+                    className={`
+                        z-30 text-text
+                        text-center text-[clamp(6rem,20vw,30rem)]
+                        absolute top-1/2 left-0 -translate-y-1/2 leading-[0.8em]
+                    `}
+                    style={{width: `calc(100% - ${scrollbarSize}px)`}}
+                    data-speed="0.5"
+                >
                     <p className={`
                     relative top-[0.11em] [text-stroke:5px_black] 
                     text-base text-shadow-[0_0_5px_#0079f9]
@@ -116,8 +133,8 @@ export default function MainSection() {
                 </div>
             </div>
             
-            <div id="footerMainSection" className={`
-                absolute w-full border-b-base border-b h-full [clip-path:polygon(0_100%,100%_100%,100%_100%,0_100%)]
+            <div id="footer-main-section" className={`
+                absolute top-0 w-full border-b-primary border-b h-full [clip-path:polygon(0_100%,100%_100%,100%_100%,0_100%)]
                 bg-primary-dark z-50
             `}></div>
         </section>
