@@ -56,7 +56,7 @@ export default function MainSection() {
                 end: 'bottom top',
                 scrub: 0
             },
-            clipPath: 'polygon(0 80%, 100% 50%, 100% 100%, 0 100%)',
+            clipPath: 'polygon(0 90%, 100% 70%, 100% 100%, 0 100%)',
         })
 
         gsap.to("#title-main-section-home", {
@@ -66,13 +66,12 @@ export default function MainSection() {
                 end: "+=400",
                 scrub: true
             },
-            scale: "0.6",
+            scale: "0.9",
         })
     }, [])
 
     return (
         <section className={`
-            ${anton.className}
             select-none relative z-10 h-dvh w-screen
         `}>
             <div id="main-section-container-home" className={`
@@ -111,7 +110,7 @@ export default function MainSection() {
                 >
                     <p className={`
                     relative top-[0.11em] [text-stroke:5px_black] 
-                    text-base text-shadow-[0_0_5px_#0079f9]
+                    text-text ${anton.className}
                     `}>BEYOND</p>
                     <div className="text-primary flex justify-center">
                         <div

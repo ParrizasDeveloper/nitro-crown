@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
 export default function SmoothScrollProvider({children}: {children: React.ReactNode}) {
     useGSAP(() => {
         const smoother = ScrollSmoother.create({
-            smooth: 2,
+            smooth: 1.5,
             effects: true,
             normalizeScroll: true
         })
