@@ -40,8 +40,8 @@ export default function HeaderNav() {
                         <div 
                             className={`
                                 flex relative group transition-all cursor-pointer rounded-2xl p-2
-                                border-2 border-neutral-700/0 hover:border-secondary
-                                hover:duration-0 h-16 w-16
+                                border-2 border-neutral-700/0 hover:bg-text/15 duration-200
+                                h-16 w-16
                             `}
                             onClick={toggleSideNav}
                         >

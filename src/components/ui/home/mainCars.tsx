@@ -1,5 +1,5 @@
 import { useScrollBar } from "@/context/ScrollbarProvider"
-import { anton, roboto } from "@/styles/fonts"
+import { roboto, teko } from "@/styles/fonts"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -15,15 +15,16 @@ export default function MainCars() {
         `}>
             <header
                 className={`
-                    ${roboto.className} text-3xl font-bold
+                    ${teko.className} text-6xl font-bold
                     flex gap-5 justify-center items-center px-16
                 `}
                 style={{marginRight: `${scrollbarSize}px`}}
             >
-                <div className="border-t  grow"></div>
+                <div className="h-[1px] bg-gradient-to-l from-primary grow"></div>
                 <p>OUR SELECTION</p>
-                <div className="border-t  grow"></div>
+                <div className="h-[1px] bg-gradient-to-r from-primary grow"></div>
             </header>
+            <div></div>
         </section>
     )
 }
