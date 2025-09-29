@@ -86,7 +86,7 @@ export default function MainSection() {
                         src='/images/home/bg_main.webp'
                         alt="background of the main section with image from the dealership"
                         fill
-                        className="object-cover hidden xl:block"
+                        className="object-cover hidden xl:block object-bottom"
                         unoptimized
                     />
                     <Image
@@ -133,7 +133,7 @@ export default function MainSection() {
             </div>
             
             <div id="footer-main-section" className={`
-                absolute top-0 w-full border-b-primary border-b h-full [clip-path:polygon(0_100%,100%_100%,100%_100%,0_100%)]
+                absolute top-0 w-full h-[calc(100%+1px)] [clip-path:polygon(0_100%,100%_100%,100%_100%,0_100%)]
                 bg-primary-dark z-50
             `}></div>
         </section>
