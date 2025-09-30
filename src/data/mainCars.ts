@@ -9,7 +9,7 @@ export const mainCars: MainCar[] = [
         transmision: 'Automatic',
         year: 2025,
         kms: 45032,
-        price: 62.000,
+        price: 62000,
         imageBaseURL: '/images/home/mustang.webp'
     },
     {
@@ -20,7 +20,7 @@ export const mainCars: MainCar[] = [
         transmision: 'Automatic',
         year: 2025,
         kms: 45032,
-        price: 62.000,
+        price: 62000,
         imageBaseURL: '/images/home/mustang.webp'
     },
     {
@@ -31,7 +31,7 @@ export const mainCars: MainCar[] = [
         transmision: 'Automatic',
         year: 2025,
         kms: 45032,
-        price: 62.000,
+        price: 62000,
         imageBaseURL: '/images/home/mustang.webp'
     },
     {
@@ -42,7 +42,7 @@ export const mainCars: MainCar[] = [
         transmision: 'Automatic',
         year: 2025,
         kms: 45032,
-        price: 62.000,
+        price: 62000,
         imageBaseURL: '/images/home/mustang.webp'
     }
 ]

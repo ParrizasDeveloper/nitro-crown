@@ -8,12 +8,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function MainCars() {
     const {scrollbarSize} = useScrollBar()
+
+    console.log(scrollbarSize)
     
     return (
         <section 
             className={`
-                relative  z-50 text-text overflow-hidden bg-primary-dark
-                pt-header
+                relative  z-50 text-text overflow-hidden pt-header
+                bg-primary-dark
             `}
             style={{ marginRight: `${scrollbarSize}px` }}
         >
@@ -30,7 +32,7 @@ export default function MainCars() {
             </header>
             <div 
                 className={`
-                
+                    bg-gradient-to-b from-primary-dark to-base
                 `}
             >
                 <CardsVehicles />
