@@ -8,13 +8,11 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function MainCars() {
     const {scrollbarSize} = useScrollBar()
-
-    console.log(scrollbarSize)
     
     return (
         <section 
             className={`
-                relative  z-50 text-text overflow-hidden pt-header
+                relative  z-50 text-text overflow-hidden pt-20
                 bg-primary-dark
             `}
             style={{ marginRight: `${scrollbarSize}px` }}
@@ -22,12 +20,12 @@ export default function MainCars() {
             <header
                 className={`
                     ${teko.className} text-6xl font-bold
-                    flex gap-5 justify-center items-center px-16 mb-header
+                    flex gap-5 justify-center items-center px-5 sm:px-16 mb-14 sm:mb-header
                 `}
                 
             >
                 <div className="h-[1px] bg-gradient-to-l from-primary grow"></div>
-                <p>OUR SELECTION</p>
+                <p className="text-[clamp(2rem,10vw,5rem)]">OUR SELECTION</p>
                 <div className="h-[1px] bg-gradient-to-r from-primary grow"></div>
             </header>
             <div 
