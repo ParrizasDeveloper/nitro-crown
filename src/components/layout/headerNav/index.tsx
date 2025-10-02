@@ -1,7 +1,7 @@
 'use client'
 import { SideNavButton } from "@/components/layout/headerNav/sideNavButton";
 import Image from "next/image";
-import SideNav from "./sideNav";
+import SideNav from "../navigation";
 import { useState } from "react";
 
 export default function HeaderNav() {

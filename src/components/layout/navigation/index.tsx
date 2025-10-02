@@ -4,7 +4,7 @@ import { anton } from "@/styles/fonts"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useLayoutEffect, useRef } from "react"
-import NavFooter from "../footer/navFooter"
+import NavFooter from "./navFooter"
 import { useScrollBar } from "@/context/ScrollbarProvider"
 
 //------------------------------------------------------------------------------

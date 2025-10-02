@@ -77,7 +77,7 @@ export default function CardsVehicles() {
                     depth: 100,
                     modifier: 1,
                     slideShadows: true,
-                    scale: .9
+                    scale: .9,
                 }}
                 breakpoints={{
                     320: {
