@@ -8,8 +8,29 @@ import { EffectCoverflow, Pagination } from "swiper/modules"
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-coverflow'
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import { useRef } from "react"
 
-export function CardVehicle({car}: {car: MainCar}) {
+export function CardVehicle({car, isActive}: {car: MainCar, isActive: boolean}) {
+    const bgPrice = useRef<HTMLDivElement | null>(null)
+    
+    useGSAP(() => {
+        if(isActive) {
+            gsap.to(bgPrice.current, {
+                clipPath: "polygon(5% 0,100% 0,95% 100%,0 100%)",
+                ease: "power3.inOut",
+                duration: 1
+            })
+        } else {
+            gsap.to(bgPrice.current, {
+                clipPath: "polygon(5% 0,10% 0,5% 100%,0 100%)",
+                ease: "power3.inOut",
+                duration: 1
+            })
+        }
+    }, {dependencies: [isActive]})
+
     return (
         <div className={`
             ${chillax.className}
@@ -30,12 +51,15 @@ export function CardVehicle({car}: {car: MainCar}) {
                     <h3 className="text-2xl font-medium leading-[1em]">{car.brand}</h3>
                     <h4 className="leading-[1em] font-light">{car.model}</h4>
                 </header>
-                <section className="relative mb-5 font-medium inline-block">
-                    <div className={`
-                        absolute left-0 h-full w-full bg-primary
-                        [clip-path:polygon(5%_0,10%_0,5%_100%,0_100%)]
-                    `}></div>
-                    <div className="mx-5">
+                <section className="relative mb-5 font-medium inline-block text-[1.2rem]">
+                    <div
+                        ref={bgPrice}
+                        className={`
+                            absolute left-0 h-full w-full bg-primary
+                            [clip-path:polygon(5%_0,10%_0,5%_100%,0_100%)]
+                        `}
+                    ></div>
+                    <div className="relative z-10 my-1 mx-5">
                         {car.price.toLocaleString("es-ES")} € 
                     </div>
                 </section>
@@ -98,12 +122,15 @@ export default function CardsVehicles() {
                 {mainCars.map((car, index) => (
                     <SwiperSlide 
                         key={index} 
+                        
                         className={`
                             border-2 rounded-2xl overflow-hidden border-secondary
                             shadow-xl/50  !w-[300px] sm:!w-[400px] 
                         `}
                     >
-                        <CardVehicle car={car} />
+                        {({isActive}) => (
+                            <CardVehicle car={car} isActive={isActive} />
+                        )}
                     </SwiperSlide>
                 ))}
             </Swiper>
