@@ -5,6 +5,7 @@ import HeaderNav from "@/components/layout/headerNav";
 import { roboto } from "@/styles/fonts";
 import { ScrollbarProvider } from "@/context/ScrollbarProvider";
 import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -28,10 +29,13 @@ export default function RootLayout({
             <SmoothScrollProvider>
               <main id="main" className={`
                 ${roboto.className} relative text-neutral-light bg-base w-screen
+                pb-footer
               `}>
                 {children}
               </main>
+              
             </SmoothScrollProvider>
+            <Footer />
           </body>
         </ScrollbarProvider>
       </html>

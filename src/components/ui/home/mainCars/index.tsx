@@ -30,7 +30,9 @@ export default function MainCars() {
             </header>
             <div 
                 className={`
-                    bg-gradient-to-b from-primary-dark to-base
+                    bg-gradient-to-b from-primary-dark to-base translate-y-0.5
+                    [transform:translateZ(0)]
+                    will-change-transform
                 `}
             >
                 <CardsVehicles />

@@ -11,6 +11,7 @@
 
 
     --spacing-header: 112px;
+    --spacing-footer: 150px;
 }
 
 @keyframes blink {
