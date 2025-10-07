@@ -12,7 +12,7 @@ export default function MainCars() {
     return (
         <section 
             className={`
-                relative  z-50 text-text overflow-hidden pt-20
+                relative z-50 text-text overflow-hidden pt-20
                 bg-primary-dark
             `}
             style={{ marginRight: `${scrollbarSize}px` }}

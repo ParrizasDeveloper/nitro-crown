@@ -29,13 +29,11 @@ export default function RootLayout({
             <SmoothScrollProvider>
               <main id="main" className={`
                 ${roboto.className} relative text-neutral-light bg-base w-screen
-                pb-footer
               `}>
                 {children}
               </main>
-              
+              <Footer />
             </SmoothScrollProvider>
-            <Footer />
           </body>
         </ScrollbarProvider>
       </html>
