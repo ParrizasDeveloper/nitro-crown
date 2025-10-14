@@ -18,7 +18,7 @@ export default function SmoothScrollProvider({children}: {children: React.ReactN
     })
     
     return (
-        <div id="smooth-wrapper">
+        <div id="smooth-wrapper" className="z-10">
             <div id="smooth-content">
                 {children}
             </div>
