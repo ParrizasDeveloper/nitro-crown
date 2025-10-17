@@ -92,7 +92,7 @@ export function CardVehicle({car, isActive}: {car: MainCar, isActive: boolean}) 
 
 export default function CardsVehicles() {
     return (
-        <div className="pb-header  mx-auto">
+        <div id="container-main-slider" className=" pb-header mx-auto">
             <Swiper
                 modules={[Pagination, EffectCoverflow]}
                 coverflowEffect={{
@@ -124,6 +124,7 @@ export default function CardsVehicles() {
                         key={index} 
                         
                         className={`
+                            carousel-card-vehicle
                             border-2 rounded-2xl overflow-hidden border-secondary
                             shadow-xl/50  !w-[300px] sm:!w-[400px] 
                         `}

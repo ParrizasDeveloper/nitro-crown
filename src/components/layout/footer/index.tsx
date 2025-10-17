@@ -58,7 +58,7 @@ export default function Footer() {
                     </ul>
                 </section>
                 <section className={`
-                    flex xl:flex-col gap-20 flex-wrap
+                    flex xl:flex-col gap-10 xl:gap-20 flex-wrap
                     basis-1/3 border-t border-secondary/50 mx-10 py-10
                     xl:border-t-0 xl:mx-0 xl:px-10 xl:border-l xl:py-5
                 `}>
@@ -78,7 +78,7 @@ export default function Footer() {
                     </div>
                 </section>
                 <section className={`
-                    flex xl:flex-col gap-20 flex-wrap
+                    flex xl:flex-col gap-10 xl:gap-20 flex-wrap
                     basis-1/3 border-t border-secondary/50 mx-10 py-10
                     xl:border-t-0 xl:mx-0 xl:px-10 xl:border-l items-center xl:py-5
                     xl:items-start
@@ -127,7 +127,7 @@ export default function Footer() {
                 </section>
             </div>
             <footer className={`
-                    flex flex-col sm:flex-row text-[0.9em] text-text/50 pt-20 xl:pt-0
+                    flex flex-col sm:flex-row text-[0.9em] text-text/50
                 `}>
                 <div className="basis-1/3 flex justify-center sm:justify-start">© 2025 Nitro Crown. All rights reserved.</div>
                 <div className="basis-1/3 flex justify-center sm:justify-center">Legal Notice · Privacy Policy · Cookie Policy</div>
