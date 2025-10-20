@@ -56,6 +56,7 @@ export default function MainSection() {
                 end: 'bottom top',
                 scrub: 0
             },
+            ease: "none",
             clipPath: 'polygon(0 90%, 100% 70%, 100% 100%, 0 100%)',
         })
 
@@ -133,8 +134,8 @@ export default function MainSection() {
             </div>
             
             <div id="footer-main-section" className={`
-                absolute top-0 w-full h-[calc(100%+1px)] [clip-path:polygon(0_100%,100%_100%,100%_100%,0_100%)]
-                bg-primary-dark z-50
+                absolute top-0 w-full h-full [clip-path:polygon(0_100%,100%_100%,100%_100%,0_100%)]
+                bg-primary-dark z-50 border
             `}></div>
         </section>
     )

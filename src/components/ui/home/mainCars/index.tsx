@@ -46,8 +46,9 @@ export default function MainCars() {
     return (
         <section 
             className={`
-                relative z-50 text-text overflow-hidden pt-20
-                bg-primary-dark
+                relative z-50 text-text overflow-hidden py-20
+                bg-gradient-to-b from-primary-dark to-secondary-dark
+                from-25% to-75% -my-[2px]
             `}
             style={{ marginRight: `${scrollbarSize}px` }}
         >
@@ -58,21 +59,15 @@ export default function MainCars() {
                 `}
                 
             >
-                <div id="main-slider-left-line" className="h-[1px] bg-gradient-to-l from-base/60 grow"></div>
+                <div id="main-slider-left-line" className="h-[1px] bg-gradient-to-l from-text/50 grow"></div>
                 <div id="header-title-main-slider" className="">
-                    <p className="text-[clamp(2rem,10vw,5rem)] text-shadow-[0_0_10px_#0079f9] pt-[0.1em]">
+                    <p className="text-[clamp(2rem,10vw,5rem)] text-shadow-[0_0_10px_#111317] pt-[0.1em] text-text">
                         OUR SELECTION
                     </p>
                 </div>
-                <div id="main-slider-right-line" className="h-[1px] bg-gradient-to-r from-base/60 grow"></div>
+                <div id="main-slider-right-line" className="h-[1px] bg-gradient-to-r from-text/50 grow"></div>
             </header>
-            <div 
-                className={`
-                    bg-gradient-to-b from-primary-dark to-base translate-y-0.5
-                    [transform:translateZ(0)]
-                    will-change-transform
-                `}
-            >
+            <div>
                 <CardsVehicles />
             </div>
         </section>
