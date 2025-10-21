@@ -48,7 +48,7 @@ export default function MainCars() {
             className={`
                 relative z-50 text-text overflow-hidden py-20
                 bg-gradient-to-b from-primary-dark to-secondary-dark
-                from-25% to-75% -my-[2px]
+                from-25% to-75%
             `}
             style={{ marginRight: `${scrollbarSize}px` }}
         >

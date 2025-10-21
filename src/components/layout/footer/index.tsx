@@ -35,8 +35,8 @@ export default function Footer() {
             id="footer-page"
             className={`
                 ${chillax.className}
-                text-sm sm:text-[1rem]
-                xl:text-[clamp(0.8rem,1vw,1.125rem)] z-0
+                relative text-sm sm:text-[1rem]
+                xl:text-[clamp(0.8rem,1vw,1.125rem)] z-20
                 w-full xl:h-[505px] px-5 xl:px-20 pt-14 pb-7 bg-secondary-dark text-text
                 flex flex-col justify-between
             `}
