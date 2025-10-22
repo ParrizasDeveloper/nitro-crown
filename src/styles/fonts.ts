@@ -27,3 +27,9 @@ export const azadliq = localFont({
     variable: "--font-azadliq",
     display: "swap"
 })
+
+export const pangchang = localFont({
+    src: "../assets/fonts/Panchang.woff2",
+    variable: "--font-pangchang",
+    display: "swap"
+})
