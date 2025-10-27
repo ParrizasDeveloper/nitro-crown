@@ -24,7 +24,7 @@ export default function Specialties() {
                 absolute -top-[2px] w-full h-[calc(100%+1px)] bg-secondary-dark z-10 
                 [clip-path:polygon(0%_0%,100%_0%,100%_10%,0%_30%)]
             `}></div>
-            <div className="absolute inset-0 opacity-10" data-speed="0.5">
+            <div className="absolute min-h-screen inset-0 opacity-10" data-speed="0.5">
                 <video
                     src="/videos/vehicles_from_drone.webm"
                     autoPlay
@@ -34,15 +34,15 @@ export default function Specialties() {
                     className="absolute inset-0 w-full h-full object-cover"
                 />
             </div>
-            <div className="relative pt-40 z-2 w-screen px-20 ">
-                <div className="grid grid-cols-7 gap-5 h-3 mb-20">
+            <div className="relative pt-40 z-2 w-screen px-10 lg:px-20">
+                <div className="grid grid-cols-5 lg:grid-cols-7 gap-5 h-3 mb-20">
                     <div className="bg-text -skew-x-[45deg]"></div>
                     <div className="bg-text -skew-x-[45deg]"></div>
                     <div className="bg-text -skew-x-[45deg]"></div>
                     <div className="bg-text -skew-x-[45deg]"></div>
                     <div className="bg-text -skew-x-[45deg]"></div>
-                    <div className="bg-text -skew-x-[45deg]"></div>
-                    <div className="bg-text -skew-x-[45deg]"></div>
+                    <div className="bg-text -skew-x-[45deg] hidden lg:block"></div>
+                    <div className="bg-text -skew-x-[45deg] hidden lg:block"></div>
                 </div>
                 <div className={`
                     ${pangchang.className}
@@ -55,14 +55,16 @@ export default function Specialties() {
                 </div>
                 <div className={`
                     ${chillax.className} text-2xl
-                    flex justify-end
+                    flex flex-col lg:flex-row justify-end gap-20 lg:gap-0
                 `}>
-                    <div className="flex basis-1/2 justify-start">
-                        <div className="ml-[20%] h-full aspect-square">
+                    <div className={`
+                        flex basis-1/3 lg:basis-1/2 justify-center lg:justify-start order-1 lg:order-0
+                    `}>
+                        <div className="lg:ml-[20%] h-full min-h-[200px] aspect-square">
                             <RoundedPrimaryButton title="About Us" />
                         </div>
                     </div>
-                    <ul className="flex flex-col basis-1/2 gap-2.5">
+                    <ul className="flex flex-col basis-2/3 lg:basis-1/2 gap-2.5">
                         <li className="flex items-center border-b pb-2.5 gap-10">
                             <CarFront className="size-[1.1em]" />
                             <span>STOCK AVAILABLE FOR SALE</span>

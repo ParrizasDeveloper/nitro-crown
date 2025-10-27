@@ -11,13 +11,18 @@ export function RoundedPrimaryButton({link, title}: {link?: string, title: strin
         const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left))
         const y = Math.max(0, Math.min(rect.height, e.clientY - rect.top))
 
-        console.log(x, y)
+        gsap.to(btnRef.current.querySelector(".circle-button"), {
+            width: "90%",
+            height: "90%",
+            x: (x - rect.width / 2) / 4,
+            y: (y - rect.height / 2) / 4,
+        })
 
         gsap.to(btnRef.current.querySelector(".circle-button>div"), {
             width: "80%",
             height: "80%",
             x: (x - rect.width / 2) / 3,
-            y: (y - rect.height / 2) / 4,
+            y: (y - rect.height / 2) / 3,
             background: "white",
             color: "#111317"
         })
@@ -25,6 +30,14 @@ export function RoundedPrimaryButton({link, title}: {link?: string, title: strin
 
     function handleLeave() {
         if(!btnRef.current) { return }
+
+        gsap.to(btnRef.current.querySelector(".circle-button"), {
+            width: "100%",
+            height: "100%",
+            x: 0,
+            y: 0
+        })
+
         gsap.to(btnRef.current.querySelector(".circle-button>div"), {
             width: "90%",
             height: "90%",
@@ -38,7 +51,7 @@ export function RoundedPrimaryButton({link, title}: {link?: string, title: strin
     return (
         <div 
             ref={btnRef}
-            className="h-full w-full cursor-pointer select-none"
+            className="flex justify-center items-center h-full w-full cursor-pointer select-none"
             onMouseMove={handleMove}
             onMouseLeave={handleLeave}
         >
