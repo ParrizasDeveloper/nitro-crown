@@ -3,9 +3,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { CarFront, KeySquare, PaintBucket, Search } from "lucide-react";
 import { RoundedPrimaryButton } from "../../material/buttons";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText)
 
 export default function Specialties() {
     useGSAP(() => {
+        const mm = gsap.matchMedia()
+
         gsap.to("#header-specialties", {
             scrollTrigger: {
                 trigger: "#header-specialties",
@@ -16,6 +21,37 @@ export default function Specialties() {
             ease: "none",
             clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"
         })
+
+        mm.add("(min-width: 1024px)", () => {
+            gsap.from("#header-lines-specialties>div", {
+                scrollTrigger: {
+                    trigger: "#header-lines-specialties",
+                    start: "top 60%",
+                },
+                stagger: {
+                    from: "end",
+                    each: 0.1,
+                },
+                opacity: 0,
+                x: -100
+            })
+        })
+
+        let split = SplitText.create(".title-specialties", {
+            type: "lines"
+        })
+
+        gsap.from(split.lines, {
+            x: 100,
+            opacity: 0,
+            autoAlpha: 0,
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".title-specialties",
+                start: "top 60%"
+            }
+        })
+        
     })
 
     return (
@@ -35,7 +71,7 @@ export default function Specialties() {
                 />
             </div>
             <div className="relative pt-40 z-2 w-screen px-10 lg:px-20">
-                <div className="grid grid-cols-5 lg:grid-cols-7 gap-5 h-3 mb-20">
+                <div id="header-lines-specialties" className="grid grid-cols-5 lg:grid-cols-7 gap-5 h-3 mb-20">
                     <div className="bg-text -skew-x-[45deg]"></div>
                     <div className="bg-text -skew-x-[45deg]"></div>
                     <div className="bg-text -skew-x-[45deg]"></div>
@@ -45,13 +81,19 @@ export default function Specialties() {
                     <div className="bg-text -skew-x-[45deg] hidden lg:block"></div>
                 </div>
                 <div className={`
-                    ${pangchang.className}
+                    ${pangchang.className} title-specialties
                     leading-[1em] font-semibold
                     text-[clamp(1rem,8dvw,20rem)] mb-20
                 `}>
-                    <div className="flex justify-end"><p>SPECIALIZED</p></div>
-                    <div className="flex justify-end"><p>IN VEHICLE</p></div>
-                    <div className="flex justify-end"><p>IMPORTS</p></div>
+                    <div className="flex justify-end">
+                        <p>SPECIALIZED</p>
+                    </div>
+                    <div className="flex justify-end">
+                        <p>IN VEHICLE</p>
+                    </div>
+                    <div className="flex justify-end">
+                        <p>IMPORTS</p>
+                    </div>
                 </div>
                 <div className={`
                     ${chillax.className} text-2xl
