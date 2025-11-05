@@ -10,6 +10,9 @@ gsap.registerPlugin(SplitText)
 export default function Specialties() {
     useGSAP(() => {
         const mm = gsap.matchMedia()
+        let split = SplitText.create("#title-specialties", {
+            type: "lines"
+        })
 
         gsap.to("#header-specialties", {
             scrollTrigger: {
@@ -35,19 +38,37 @@ export default function Specialties() {
                 opacity: 0,
                 x: -100
             })
-        })
 
-        let split = SplitText.create(".title-specialties", {
-            type: "lines"
+            gsap.from("#list-specialties>li", {
+                scrollTrigger: {
+                    trigger: "#list-specialties",
+                    start: "top 80%"
+                },
+                opacity: 0,
+                x: 100,
+                stagger: 0.1
+            })
+
+            gsap.from("#specialties-button", {
+                scrollTrigger: {
+                    trigger: "#specialties-button",
+                    start: "top 80%"
+                },
+                opacity: 0,
+                scale: 0.5,
+                ease: "elastic.out",
+                duration: 1.5,
+                delay: 0.5,
+            })
         })
 
         gsap.from(split.lines, {
             x: 100,
             opacity: 0,
             autoAlpha: 0,
-            stagger: 0.1,
+            stagger: 0.4,
             scrollTrigger: {
-                trigger: ".title-specialties",
+                trigger: "#title-specialties",
                 start: "top 60%"
             }
         })
@@ -80,11 +101,14 @@ export default function Specialties() {
                     <div className="bg-text -skew-x-[45deg] hidden lg:block"></div>
                     <div className="bg-text -skew-x-[45deg] hidden lg:block"></div>
                 </div>
-                <div className={`
-                    ${pangchang.className} title-specialties
-                    leading-[1em] font-semibold
-                    text-[clamp(1rem,8dvw,20rem)] mb-20
-                `}>
+                <div 
+                    id="title-specialties"
+                    className={`
+                        ${pangchang.className}
+                        leading-[1em] font-semibold
+                        text-[clamp(1rem,8dvw,20rem)] mb-20
+                    `}
+                >
                     <div className="flex justify-end">
                         <p>SPECIALIZED</p>
                     </div>
@@ -102,11 +126,11 @@ export default function Specialties() {
                     <div className={`
                         flex basis-1/3 lg:basis-1/2 justify-center lg:justify-start order-1 lg:order-0
                     `}>
-                        <div className="lg:ml-[20%] h-full min-h-[200px] aspect-square">
-                            <RoundedPrimaryButton title="About Us" />
+                        <div id="specialties-button" className="lg:ml-[20%] h-full min-h-[200px] aspect-square">
+                            <RoundedPrimaryButton title="About Us" link="/about" />
                         </div>
                     </div>
-                    <ul className="flex flex-col basis-2/3 lg:basis-1/2 gap-2.5">
+                    <ul id="list-specialties" className="flex flex-col basis-2/3 lg:basis-1/2 gap-2.5">
                         <li className="flex items-center border-b pb-2.5 gap-10">
                             <CarFront className="size-[1.1em]" />
                             <span>STOCK AVAILABLE FOR SALE</span>
