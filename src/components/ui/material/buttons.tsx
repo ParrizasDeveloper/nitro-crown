@@ -1,14 +1,16 @@
 'use client'
 
+
 import { PageTransitionContext } from "@/providers/PageTransitionProvider"
 import gsap from "gsap"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useContext, useRef } from "react"
 
-export function RoundedPrimaryButton({link, title}: {link?: string, title: string}) {
+export function RoundedPrimaryButton({link, title}: {link: string, title: string}) {
+    const { startTransitionTo } = useContext(PageTransitionContext)
     const router = useRouter()
-    const { startTransition } = useContext(PageTransitionContext)
-    const btnRef = useRef<HTMLDivElement | null>(null)
+    const btnRef = useRef<HTMLAnchorElement | null>(null)
     
     function handleMove(e: React.MouseEvent) {
         if(!btnRef.current) { return }
@@ -54,20 +56,16 @@ export function RoundedPrimaryButton({link, title}: {link?: string, title: strin
         })
     }
 
-    function handleClick() {
-        if (!link) { return }
-        
-        startTransition()
-        setTimeout(() => {
-            router.push(link)
-        }, 1000);
-
+    function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault()
+        startTransitionTo(link)
     }
 
     return (
-        <div 
+        <Link 
             ref={btnRef}
             className="flex justify-center items-center h-full w-full cursor-pointer select-none"
+            href={link}
             onMouseMove={handleMove}
             onMouseLeave={handleLeave}
             onClick={handleClick}
@@ -86,6 +84,6 @@ export function RoundedPrimaryButton({link, title}: {link?: string, title: strin
                     {title}
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
