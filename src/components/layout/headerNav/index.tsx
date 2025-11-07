@@ -11,6 +11,10 @@ export default function HeaderNav() {
         setSideNavOpen(!sideNavOpen)
     }
 
+    function closeSideNav() {
+        setSideNavOpen(false)
+    }
+
     return (
         <>
             <header className="fixed top-0 w-dvw h-28 p-4 z-200">
@@ -50,7 +54,7 @@ export default function HeaderNav() {
                     </div>
                 </nav>
             </header>
-            <SideNav open={sideNavOpen} />   
+            <SideNav open={sideNavOpen} closeNav={closeSideNav} />   
         </>
     );
 }

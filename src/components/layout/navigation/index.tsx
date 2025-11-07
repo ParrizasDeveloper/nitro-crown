@@ -6,12 +6,14 @@ import gsap from "gsap"
 import { useLayoutEffect, useRef } from "react"
 import NavFooter from "./navFooter"
 import { useScrollBar } from "@/context/ScrollbarProvider"
+import { usePageTransition } from "@/providers/PageTransitionProvider"
 
 //------------------------------------------------------------------------------
 //ARREGLAR TOGGLE DE NAVEGACIÓN AL CLICAR RÁPIDAMENTE VARIAS VECES CONSECUTIVAS!!
 //------------------------------------------------------------------------------
 
-export default function SideNav({open}: {open: boolean}) {
+export default function SideNav({open, closeNav}: {open: boolean, closeNav: () => void}) {
+    const { startTransitionTo } = usePageTransition()
     const container = useRef<HTMLDivElement | null>(null)
     const navWords = useRef<Element[]>([])
     const {scrollbarSize: scrollbarWidth} = useScrollBar()
@@ -98,6 +100,11 @@ export default function SideNav({open}: {open: boolean}) {
         })
     }
 
+    function handleClickLink(event: React.MouseEvent<HTMLAnchorElement>, link: string) {
+        event.preventDefault()
+        startTransitionTo(link, closeNav)
+    }
+
     return (
         <div 
             id="responsiveNav"
@@ -119,7 +126,7 @@ export default function SideNav({open}: {open: boolean}) {
                     shrink-[4]
                 `}>
                     <nav id="sideNavLinks">
-                        <Link 
+                        {/*<Link 
                             href="" 
                             className="sideNavLink grid grid-cols-[0.7ch_auto] items-center gap-3 py-2.5"
                             onMouseEnter={handleHoverLink}
@@ -142,7 +149,7 @@ export default function SideNav({open}: {open: boolean}) {
                                     </div>
                                 ))}
                             </span>
-                        </Link>
+                        </Link>*/}
                         {
                             links.map((link, i) => (
                                 <Link
@@ -151,9 +158,10 @@ export default function SideNav({open}: {open: boolean}) {
                                     className="sideNavLink grid grid-cols-[0.7ch_auto] items-center gap-3  py-2.5"
                                     onMouseEnter={handleHoverLink}
                                     onMouseLeave={handleLeaveLink}
+                                    onClick={(e) => handleClickLink(e, link.link)}
                                 >
                                     <span className="index text-[0.3em]">
-                                        {`0${i + 2}`}
+                                        {`0${i + 1}`}
                                     </span>
                                     <span className="navlink-name flex">
                                         {Array.from(link.name.toUpperCase()).map((char, i) => (

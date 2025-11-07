@@ -4,10 +4,13 @@ import gsap from "gsap";
 import { CarFront, KeySquare, PaintBucket, Search } from "lucide-react";
 import { RoundedPrimaryButton } from "../../material/buttons";
 import { SplitText } from "gsap/SplitText";
+import { usePageTransition } from "@/providers/PageTransitionProvider";
 
 gsap.registerPlugin(SplitText)
 
 export default function Specialties() {
+    const { startTransitionTo } = usePageTransition();
+
     useGSAP(() => {
         const mm = gsap.matchMedia()
         let split = SplitText.create("#title-specialties", {
@@ -72,8 +75,12 @@ export default function Specialties() {
                 start: "top 60%"
             }
         })
-        
     })
+
+    function handleButtonClick(e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault()
+        startTransitionTo("/about")
+    }
 
     return (
         <section className="relative text-text pb-40">
@@ -127,7 +134,7 @@ export default function Specialties() {
                         flex basis-1/3 lg:basis-1/2 justify-center lg:justify-start order-1 lg:order-0
                     `}>
                         <div id="specialties-button" className="lg:ml-[20%] h-full min-h-[200px] aspect-square">
-                            <RoundedPrimaryButton title="About Us" link="/about" />
+                            <RoundedPrimaryButton title="About Us" link="/about" onClick={handleButtonClick} />
                         </div>
                     </div>
                     <ul id="list-specialties" className="flex flex-col basis-2/3 lg:basis-1/2 gap-2.5">
