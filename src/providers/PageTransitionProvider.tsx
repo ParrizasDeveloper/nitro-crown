@@ -73,9 +73,6 @@ export function PageTransitionProvider({children}: {children: React.ReactNode}) 
                 ref={overlayRef}
                 className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] bg-black"
             ></div>
-            <div>
-                
-            </div>
             {children}
         </PageTransitionContext.Provider>
     )

@@ -13,9 +13,6 @@ export default function Specialties() {
 
     useGSAP(() => {
         const mm = gsap.matchMedia()
-        let split = SplitText.create("#title-specialties", {
-            type: "lines"
-        })
 
         gsap.to("#header-specialties", {
             scrollTrigger: {
@@ -28,51 +25,48 @@ export default function Specialties() {
             clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)"
         })
 
-        mm.add("(min-width: 1024px)", () => {
-            gsap.from("#header-lines-specialties>div", {
-                scrollTrigger: {
-                    trigger: "#header-lines-specialties",
-                    start: "top 60%",
-                },
-                stagger: {
-                    from: "end",
-                    each: 0.1,
-                },
-                opacity: 0,
-                x: -100
-            })
-
-            gsap.from("#list-specialties>li", {
-                scrollTrigger: {
-                    trigger: "#list-specialties",
-                    start: "top 80%"
-                },
-                opacity: 0,
-                x: 100,
-                stagger: 0.1
-            })
-
-            gsap.from("#specialties-button", {
-                scrollTrigger: {
-                    trigger: "#specialties-button",
-                    start: "top 80%"
-                },
-                opacity: 0,
-                scale: 0.5,
-                ease: "elastic.out",
-                duration: 1.5,
-                delay: 0.5,
-            })
+        gsap.from("#header-lines-specialties>div", {
+            scrollTrigger: {
+                trigger: "#header-lines-specialties",
+                start: "top 80%",
+            },
+            stagger: {
+                from: "end",
+                each: 0.1,
+            },
+            opacity: 0,
+            x: -100
         })
 
-        gsap.from(split.lines, {
+        gsap.from("#list-specialties>li", {
+            scrollTrigger: {
+                trigger: "#list-specialties",
+                start: "top 80%"
+            },
+            opacity: 0,
+            x: 100,
+            stagger: 0.1
+        })
+
+        gsap.from("#specialties-button", {
+            scrollTrigger: {
+                trigger: "#specialties-button",
+                start: "top 80%"
+            },
+            opacity: 0,
+            scale: 0.5,
+            ease: "elastic.out",
+            duration: 1.5,
+            delay: 0.5,
+        })
+
+        gsap.from("#title-specialties>div", {
             x: 100,
             opacity: 0,
-            autoAlpha: 0,
             stagger: 0.4,
             scrollTrigger: {
                 trigger: "#title-specialties",
-                start: "top 60%"
+                start: "top 80%"
             }
         })
     })
@@ -81,9 +75,8 @@ export default function Specialties() {
         e.preventDefault()
         startTransitionTo("/about")
     }
-
     return (
-        <section className="relative text-text pb-40">
+        <section className="relative text-text pb-40 overflow-hidden">
             <div id="header-specialties" className={`
                 absolute -top-[2px] w-full h-[calc(100%+1px)] bg-secondary-dark z-10 
                 [clip-path:polygon(0%_0%,100%_0%,100%_10%,0%_30%)]
