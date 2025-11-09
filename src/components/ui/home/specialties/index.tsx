@@ -12,8 +12,6 @@ export default function Specialties() {
     const { startTransitionTo } = usePageTransition();
 
     useGSAP(() => {
-        const mm = gsap.matchMedia()
-
         gsap.to("#header-specialties", {
             scrollTrigger: {
                 trigger: "#header-specialties",
@@ -81,7 +79,7 @@ export default function Specialties() {
                 absolute -top-[2px] w-full h-[calc(100%+1px)] bg-secondary-dark z-10 
                 [clip-path:polygon(0%_0%,100%_0%,100%_10%,0%_30%)]
             `}></div>
-            <div className="absolute min-h-screen inset-0 opacity-10" data-speed="0.5">
+            <div className="absolute min-h-screen inset-0 opacity-10" data-speed="0.4">
                 <video
                     src="/videos/vehicles_from_drone.webm"
                     autoPlay
