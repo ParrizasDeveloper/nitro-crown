@@ -56,7 +56,6 @@ export default function MainCars() {
                     ${chillax.className} text-6xl text-base
                     flex gap-5 justify-center items-center px-5 sm:px-16 mb-14 sm:mb-header
                 `}
-                
             >
                 <div id="main-slider-left-line" className="h-[1px] bg-gradient-to-l from-text/50 max-w-[300px] grow"></div>
                 <div id="header-title-main-slider" className="">

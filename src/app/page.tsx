@@ -9,10 +9,8 @@ export default function Home() {
   return (
     <>
       <MainSection />
-      <div className="">
-        <MainCars />
-        <Specialties />
-      </div>
+      <MainCars />
+      <Specialties />
     </>
   )
 }

@@ -2,10 +2,16 @@
 import { SideNavButton } from "@/components/layout/headerNav/sideNavButton";
 import Image from "next/image";
 import SideNav from "../navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useScrollBar } from "@/context/ScrollbarProvider";
 
 export default function HeaderNav() {
     const [sideNavOpen, setSideNavOpen] = useState<boolean>(false)
+    const {changeScrollbarSize} = useScrollBar()
+
+    useEffect(() => {
+        changeScrollbarSize(window.innerWidth - document.body.scrollWidth)
+    }, [])
 
     function toggleSideNav() {
         setSideNavOpen(!sideNavOpen)
