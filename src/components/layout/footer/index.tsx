@@ -1,34 +1,8 @@
-'use client'
-
 import { links } from "@/data/sections";
 import { chillax } from "@/styles/fonts";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa6"
 
 export default function Footer() {
-    useGSAP(() => {
-        const mm = gsap.matchMedia()
-
-        mm.add("(min-width: 1280px)", () => {
-            gsap.from("#footer-page>div", {
-                scrollTrigger: {
-                    trigger: "#footer-page",
-                    start: "center bottom",
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: "power1.out"
-            })
-
-            return () => {
-                gsap.killTweensOf("#footer-page>div")
-            }
-        })
-
-        
-    })
 
     return (
         <footer

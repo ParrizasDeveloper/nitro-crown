@@ -9,3 +9,9 @@ export type MainCar = {
     transmision: 'Automatic' | 'Manual' | 'Semi-automatic',
     fuel: 'Gasoline' | 'Diesel' | 'Electric' | 'Hybrid'
 }
+
+export type OrderByTypes = 'Disponibility'
+    | 'Price: Low to High'
+    | 'Price: High to Low'
+    | 'Year: New to Old'
+    | 'Year: Old to New'

@@ -4,10 +4,13 @@ import { chillax, pangchang } from "@/styles/fonts";
 import { Search } from "lucide-react";
 import { useRef, useState } from "react";
 import SoldCarsCheckbox from "./soldCarsCheckbox";
+import SortBy from "./sortBy";
+import { OrderByTypes } from "@/lib/definitions";
 
 export default function VehiclesFilterHeader() {
     const inputRef = useRef<HTMLInputElement>(null);
     const [showSoldCars, setShowSoldCars] = useState(true);
+    const [orderBy, setOrderBy] = useState<OrderByTypes>('Disponibility');
 
     return (
         <header className={`
@@ -51,10 +54,7 @@ export default function VehiclesFilterHeader() {
                 <div className="flex justify-center basis-1/3">
                     <div className="flex items-center">We found x vehicles</div>
                 </div>
-                <div className="flex justify-center gap-5 basis-1/3">
-                    <div className="flex items-center">Sort by</div>
-                    <div className="w-[150px] border border-secondary rounded-lg "></div>
-                </div>
+                <SortBy orderBy={orderBy} setOrderBy={setOrderBy} />
             </div>
         </header>
     )
