@@ -1,4 +1,4 @@
-import { chillax, pangchang, teko } from "@/styles/fonts";
+import { chillax, pangchang } from "@/styles/fonts";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { CarFront, KeySquare, PaintBucket, Search } from "lucide-react";

@@ -2,7 +2,6 @@
 
 import gsap from "gsap"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { useRef } from "react"
 
 export function RoundedPrimaryButton({
@@ -14,7 +13,6 @@ export function RoundedPrimaryButton({
     title: string, 
     onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void
 }) {
-    const router = useRouter()
     const btnRef = useRef<HTMLAnchorElement | null>(null)
     
     function handleMove(e: React.MouseEvent) {
