@@ -1,4 +1,4 @@
-import { useScrollBar } from "@/context/ScrollbarProvider"
+import { useScrollBar } from "@/providers/ScrollbarProvider"
 import { chillax } from "@/styles/fonts"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"

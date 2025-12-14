@@ -76,7 +76,7 @@ export default function Specialties() {
     return (
         <section className="relative text-text pb-40 overflow-hidden">
             <div id="header-specialties" className={`
-                absolute -top-[2px] w-full h-[calc(100%+1px)] bg-secondary-dark z-10 
+                absolute -top-0.5 w-full h-[calc(100%+1px)] bg-secondary-dark z-10 
                 [clip-path:polygon(0%_0%,100%_0%,100%_10%,0%_30%)]
             `}></div>
             <div className="absolute min-h-screen inset-0 opacity-10" data-speed="0.4">
@@ -91,13 +91,13 @@ export default function Specialties() {
             </div>
             <div className="relative pt-40 z-2 w-screen px-10 lg:px-20">
                 <div id="header-lines-specialties" className="grid grid-cols-5 lg:grid-cols-7 gap-5 h-3 mb-20">
-                    <div className="bg-text -skew-x-[45deg]"></div>
-                    <div className="bg-text -skew-x-[45deg]"></div>
-                    <div className="bg-text -skew-x-[45deg]"></div>
-                    <div className="bg-text -skew-x-[45deg]"></div>
-                    <div className="bg-text -skew-x-[45deg]"></div>
-                    <div className="bg-text -skew-x-[45deg] hidden lg:block"></div>
-                    <div className="bg-text -skew-x-[45deg] hidden lg:block"></div>
+                    <div className="bg-text -skew-x-45"></div>
+                    <div className="bg-text -skew-x-45"></div>
+                    <div className="bg-text -skew-x-45"></div>
+                    <div className="bg-text -skew-x-45"></div>
+                    <div className="bg-text -skew-x-45"></div>
+                    <div className="bg-text -skew-x-45 hidden lg:block"></div>
+                    <div className="bg-text -skew-x-45 hidden lg:block"></div>
                 </div>
                 <div 
                     id="title-specialties"

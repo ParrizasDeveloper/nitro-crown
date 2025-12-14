@@ -3,7 +3,7 @@ import { SideNavButton } from "@/components/layout/headerNav/sideNavButton";
 import Image from "next/image";
 import SideNav from "../navigation";
 import { useEffect, useState } from "react";
-import { useScrollBar } from "@/context/ScrollbarProvider";
+import { useScrollBar } from "@/providers/ScrollbarProvider";
 
 export default function HeaderNav() {
     const [sideNavOpen, setSideNavOpen] = useState<boolean>(false)

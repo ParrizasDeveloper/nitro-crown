@@ -2,15 +2,33 @@
 
 import { chillax, pangchang } from "@/styles/fonts";
 import { Search } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import SoldCarsCheckbox from "./soldCarsCheckbox";
 import SortBy from "./sortBy";
-import { OrderByTypes } from "@/lib/definitions";
+import { VehiclesFilter } from "@/lib/definitions";
 
-export default function VehiclesFilterHeader() {
+
+
+export default function VehiclesFilterHeader({
+    filters,
+    setFilters,
+    count,
+}: {
+    filters: VehiclesFilter,
+    setFilters: (newFilters: VehiclesFilter) => void,
+    count: number,
+}) {
     const inputRef = useRef<HTMLInputElement>(null);
-    const [showSoldCars, setShowSoldCars] = useState(true);
-    const [orderBy, setOrderBy] = useState<OrderByTypes>('Disponibility');
+    const timeOutRef = useRef<NodeJS.Timeout | null>(null);
+
+    function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
+        if (timeOutRef.current) {
+            clearTimeout(timeOutRef.current);
+        }
+        timeOutRef.current = setTimeout(() => {
+            setFilters({...filters, searchText: e.target.value});
+        }, 500);
+    }
 
     return (
         <header className={`
@@ -23,7 +41,7 @@ export default function VehiclesFilterHeader() {
             <div 
                 className={`
                     relative flex items-center h-[4.5em] mb-20 bg-secondary-dark
-                    border-2 border-primary rounded-[24px]
+                    border-2 border-primary rounded-3xl
                 `}
                 
             >
@@ -36,6 +54,7 @@ export default function VehiclesFilterHeader() {
                         type="text"
                         placeholder="Search vehicle..."
                         className="outline-0 text-[1.5em]"
+                        onChange={handleSearchChange}
                     />
                 </div>
                 <div className="h-full aspect-square p-1">
@@ -50,11 +69,11 @@ export default function VehiclesFilterHeader() {
                 </div>
             </div>
             <div className="flex h-[3.5em] w-full text-center text-[1.2em]">
-                <SoldCarsCheckbox active={showSoldCars} toogleCheck={setShowSoldCars} />
+                <SoldCarsCheckbox active={filters.soldCars} toogleCheck={(soldCars) => setFilters({...filters, soldCars})} />
                 <div className="flex justify-center basis-1/3">
-                    <div className="flex items-center">We found x vehicles</div>
+                    <div className="flex items-center">We found {count} vehicles</div>
                 </div>
-                <SortBy orderBy={orderBy} setOrderBy={setOrderBy} />
+                <SortBy orderBy={filters.orderBy} setOrderBy={(orderBy) => setFilters({...filters, orderBy})} />
             </div>
         </header>
     )

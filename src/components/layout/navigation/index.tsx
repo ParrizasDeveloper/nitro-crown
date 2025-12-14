@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useLayoutEffect, useRef } from "react"
 import NavFooter from "./navFooter"
-import { useScrollBar } from "@/context/ScrollbarProvider"
+import { useScrollBar } from "@/providers/ScrollbarProvider"
 import { usePageTransition } from "@/providers/PageTransitionProvider"
 
 //------------------------------------------------------------------------------

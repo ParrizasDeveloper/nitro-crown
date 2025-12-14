@@ -1,6 +1,6 @@
 'use client'
 
-import { useScrollBar } from "@/context/ScrollbarProvider"
+import { useScrollBar } from "@/providers/ScrollbarProvider"
 import { anton, teko } from "@/styles/fonts"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"

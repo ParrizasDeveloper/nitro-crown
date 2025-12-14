@@ -1,13 +1,14 @@
 export type MainCar = {
-    name: string,
+    title: string,
     brand: string,
     model: string,
-    imageBaseURL: string,
-    price: number,
     year: number,
+    price: number,
     kms: number,
-    transmision: 'Automatic' | 'Manual' | 'Semi-automatic',
-    fuel: 'Gasoline' | 'Diesel' | 'Electric' | 'Hybrid'
+    availability: 'Available' | 'Sold' | 'Reserved',
+    transmission: 'Automatic' | 'Manual' | 'SemiAutomatic',
+    fuelType: 'Gasoline' | 'Diesel' | 'Electric' | 'Hybrid',
+    description: string,
 }
 
 export type OrderByTypes = 'Disponibility'
@@ -15,3 +16,9 @@ export type OrderByTypes = 'Disponibility'
     | 'Price: High to Low'
     | 'Year: New to Old'
     | 'Year: Old to New'
+
+export type VehiclesFilter = {
+    searchText: string;
+    soldCars: boolean;
+    orderBy: OrderByTypes;
+}

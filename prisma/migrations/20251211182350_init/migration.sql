@@ -1,8 +1,18 @@
+-- CreateEnum
+CREATE TYPE "Transmission" AS ENUM ('Automatic', 'Manual', 'SemiAutomatic');
+
+-- CreateEnum
+CREATE TYPE "FuelType" AS ENUM ('Gasoline', 'Diesel', 'Electric', 'Hybrid');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
+    "clerkId" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "name" TEXT,
+    "imageURL" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "role" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -15,7 +25,10 @@ CREATE TABLE "Car" (
     "model" TEXT NOT NULL,
     "year" INTEGER NOT NULL,
     "price" INTEGER NOT NULL,
-    "imageBaseURL" TEXT NOT NULL,
+    "kms" INTEGER NOT NULL,
+    "transmission" "Transmission" NOT NULL,
+    "fuelType" "FuelType" NOT NULL,
+    "imageBaseURL" TEXT,
     "images" TEXT[],
     "description" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -32,6 +45,9 @@ CREATE TABLE "Favorite" (
 
     CONSTRAINT "Favorite_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_clerkId_key" ON "User"("clerkId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");

@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import HeaderNav from "@/components/layout/headerNav";
 import { roboto } from "@/styles/fonts";
-import { ScrollbarProvider } from "@/context/ScrollbarProvider";
+import { ScrollbarProvider } from "@/providers/ScrollbarProvider";
 import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
 import Footer from "@/components/layout/footer";
 import ClientLayout from "@/components/layout/ClientLayout";

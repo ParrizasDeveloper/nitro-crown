@@ -4,48 +4,70 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+
+enum Transmission {
+  Automatic
+  Manual
+  SemiAutomatic
+}
+
+enum FuelType {
+  Gasoline
+  Diesel
+  Electric
+  Hybrid
+}
+
+enum Availability {
+  Available
+  Sold
+  Reserved
+}
+
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
-  id          String      @id @default(cuid())
-  clerkId     String      @unique
-  email       String      @unique
-  name        String?
-  imageURL    String?
+  id          String @id @default (cuid())
+  clerkId     String @unique
+  email       String @unique
+  name        String ?
+  imageURL    String ?
   favorites   Favorite[]
-  createdAt   DateTime    @default(now())
-  role        String?
+  createdAt   DateTime @default (now())
+  role        String ?
 }
 
 model Car {
-  id            String     @id @default(cuid())
+  id            String @id @default (cuid())
   title         String
   brand         String
   model         String
   year          Int
   price         Int
-  imageBaseURL  String?
+  kms           Int
+  availability  Availability @default(Available)
+  transmission  Transmission
+  fuelType      FuelType
+  imageBaseURL  String ?
   images        String[]
   description   String
   favorites     Favorite[]
-  createdAt     DateTime   @default(now())
+  createdAt     DateTime @default (now())
 }
 
 model Favorite {
-  id        String   @id @default(cuid())
+  id        String @id @default (cuid())
   userId    String
   carId     String
-  user      User     @relation(fields: [userId], references: [id])
-  car       Car      @relation(fields: [carId], references: [id])
-  createdAt DateTime @default(now())
+  user      User @relation(fields: [userId], references: [id])
+  car       Car @relation(fields: [carId], references: [id])
+  createdAt DateTime @default (now())
 
   @@unique([userId, carId])
 }
