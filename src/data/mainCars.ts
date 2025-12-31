@@ -2,58 +2,68 @@ import { MainCar } from "@/lib/definitions";
 
 export const mainCars: MainCar[] = [
     {
-        name: 'Ford Mustang',
+        title: 'Ford Mustang',
         brand: 'Ford',
         model: 'Mustang',
-        fuel: 'Gasoline',
-        transmision: 'Automatic',
+        fuelType: 'Gasoline',
+        transmission: 'Automatic',
         year: 2025,
         kms: 45032,
         price: 62000,
-        imageBaseURL: '/images/home/mustang.webp'
+        images: ['/images/home/mustang.webp'],
+        availability: 'Available',
+        description: 'A powerful and stylish sports car with modern features.'
     },
     {
-        name: 'Ford Mustang',
+        title: 'Ford Mustang',
         brand: 'Ford',
         model: 'Mustang',
-        fuel: 'Gasoline',
-        transmision: 'Automatic',
+        fuelType: 'Gasoline',
+        transmission: 'Automatic',
         year: 2025,
         kms: 45032,
         price: 62000,
-        imageBaseURL: '/images/home/mustang.webp'
+        images: ['/images/home/mustang.webp'],
+        availability: 'Available',
+        description: 'A powerful and stylish sports car with modern features.'
     },
     {
-        name: 'Ford Mustang',
+        title: 'Ford Mustang',
         brand: 'Ford',
         model: 'Mustang',
-        fuel: 'Gasoline',
-        transmision: 'Automatic',
+        fuelType: 'Gasoline',
+        transmission: 'Automatic',
         year: 2025,
         kms: 45032,
         price: 62000,
-        imageBaseURL: '/images/home/mustang.webp'
+        images: ['/images/home/mustang.webp'],
+        availability: 'Available',
+        description: 'A powerful and stylish sports car with modern features.'
     },
     {
-        name: 'Ford Mustang',
+        title: 'Ford Mustang',
         brand: 'Ford',
         model: 'Mustang',
-        fuel: 'Gasoline',
-        transmision: 'Automatic',
+        fuelType: 'Gasoline',
+        transmission: 'Automatic',
         year: 2025,
         kms: 45032,
         price: 62000,
-        imageBaseURL: '/images/home/mustang.webp'
+        images: ['/images/home/mustang.webp'],
+        availability: 'Available',
+        description: 'A powerful and stylish sports car with modern features.'
     },
     {
-        name: 'Ford Mustang',
+        title: 'Ford Mustang',
         brand: 'Ford',
         model: 'Mustang',
-        fuel: 'Gasoline',
-        transmision: 'Automatic',
+        fuelType: 'Gasoline',
+        transmission: 'Automatic',
         year: 2025,
         kms: 45032,
         price: 62000,
-        imageBaseURL: '/images/home/mustang.webp'
+        images: ['/images/home/mustang.webp'],
+        availability: 'Available',
+        description: 'A powerful and stylish sports car with modern features.'
     }
 ]

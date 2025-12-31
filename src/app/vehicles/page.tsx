@@ -5,7 +5,7 @@ import VehicleList from "@/components/ui/vehicles/vehicleList";
 import { getCars } from "@/lib/actions";
 import { MainCar, VehiclesFilter } from "@/lib/definitions";
 import { useScrollBar } from "@/providers/ScrollbarProvider";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Vehicles() {
     const {scrollbarSize} = useScrollBar()
@@ -15,15 +15,26 @@ export default function Vehicles() {
         orderBy: 'Disponibility',
     });
     const [vehicles, setVehicles] = useState<MainCar[]>([])
+    const [loading, setLoading] = useState<boolean>(true)
+    const firstLoadRef = useRef<boolean>(true);
 
     useEffect(() => {
-        getCars(filters).then(cars => setVehicles(cars))
+        setLoading(true)
+        getCars(filters).then(cars => {
+            setVehicles(cars)
+            setLoading(false)
+        })
     }, [filters])
 
     return (
         <div className="min-h-screen text-text">
             <div style={{paddingRight: scrollbarSize}}>
-                <VehiclesFilterHeader filters={filters} setFilters={setFilters} count={vehicles.length} />
+                <VehiclesFilterHeader 
+                    filters={filters} 
+                    setFilters={setFilters} 
+                    count={vehicles.length}
+                    loading={loading}
+                />
                 <main>
                     <VehicleList vehicles={vehicles} />
                 </main>

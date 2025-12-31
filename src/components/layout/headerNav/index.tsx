@@ -23,14 +23,16 @@ export default function HeaderNav() {
 
     return (
         <>
-            <header className="fixed top-0 w-dvw h-28 p-4 z-200">
-                <nav className={
-                    `relative text-contrast flex h-full justify-between items-center
-                m-auto`
-                }>
-                    <div className={`relative h-full w-[150px] min-w-[150px] 
-                    cursor-pointer rounded-3xl py-3 px-7`
-                    }>
+            <header className="fixed top-0 w-dvw h-28 p-4 z-150 pointer-events-none">
+                <nav className={`
+                    relative text-contrast flex h-full justify-between items-center
+                    m-auto pointer-events-none
+                `}>
+                    <div className={`
+                        relative h-full w-[150px] min-w-[150px] 
+                        cursor-pointer rounded-3xl py-3 px-7
+                        pointer-events-auto
+                    `}>
                         <Image
                             src='/images/NCLogo.png'
                             width={1000}
@@ -44,7 +46,7 @@ export default function HeaderNav() {
                     <div
                         className={`
                         h-full w-[100px] lg:w-[150px] rounded-3xl text-center 
-                        flex justify-center items-center
+                        flex justify-center items-center pointer-events-auto
                     `}
                     >
                         <div 

@@ -11,7 +11,10 @@ export default function SoldCarsCheckbox({
 }) {
 
     return (
-        <div className="flex justify-center basis-1/3 select-none">
+        <div className={`
+            h-[3.5em]
+            flex justify-start basis-1/2 xl:basis-1/3 lg:order-1 select-none
+        `}>
             <input 
                 type="checkbox" 
                 id="sold-cars" 

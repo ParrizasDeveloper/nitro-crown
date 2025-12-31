@@ -6,6 +6,7 @@ import { useRef } from "react";
 import SoldCarsCheckbox from "./soldCarsCheckbox";
 import SortBy from "./sortBy";
 import { VehiclesFilter } from "@/lib/definitions";
+import { LoadingElement } from "../../material/loadingElements";
 
 
 
@@ -13,10 +14,12 @@ export default function VehiclesFilterHeader({
     filters,
     setFilters,
     count,
+    loading,
 }: {
     filters: VehiclesFilter,
     setFilters: (newFilters: VehiclesFilter) => void,
     count: number,
+    loading: boolean,
 }) {
     const inputRef = useRef<HTMLInputElement>(null);
     const timeOutRef = useRef<NodeJS.Timeout | null>(null);
@@ -68,11 +71,21 @@ export default function VehiclesFilterHeader({
                     </div>
                 </div>
             </div>
-            <div className="flex h-[3.5em] w-full text-center text-[1.2em]">
+            <div className="flex flex-wrap w-full px-10 text-[1.2em] gap-y-5">
                 <SoldCarsCheckbox active={filters.soldCars} toogleCheck={(soldCars) => setFilters({...filters, soldCars})} />
-                <div className="flex justify-center basis-1/3">
-                    <div className="flex items-center">We found {count} vehicles</div>
-                </div>
+                {
+                    !loading ? (
+                        <div className={`
+                            h-[3.5em]
+                            flex justify-center basis-full order-3 xl:basis-1/3 xl:order-2
+                        `}>
+                            <div className="flex items-center">We found {count} vehicles</div>
+                        </div>
+                    ) : (
+                        <LoadingElement />
+                    )
+                    
+                }
                 <SortBy orderBy={filters.orderBy} setOrderBy={(orderBy) => setFilters({...filters, orderBy})} />
             </div>
         </header>

@@ -9,6 +9,7 @@ export type MainCar = {
     transmission: 'Automatic' | 'Manual' | 'SemiAutomatic',
     fuelType: 'Gasoline' | 'Diesel' | 'Electric' | 'Hybrid',
     description: string,
+    images: string[],
 }
 
 export type OrderByTypes = 'Disponibility'

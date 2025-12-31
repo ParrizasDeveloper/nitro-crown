@@ -41,17 +41,28 @@ export default function SortBy({ orderBy, setOrderBy }: {
         });
 
         if(!optionsRef.current) return;
+        
+        const tl = gsap.timeline();
 
-        gsap.to(optionsRef.current.querySelector('div'), {
+        tl.to(optionsRef.current.querySelector('div'), {
             y: isOpen ? 0 : -100,
             duration: 0.25,
             opacity: isOpen ? 1 : 0,
         })
+
+        tl.set(optionsRef.current.querySelector('div'), {
+            display: isOpen ? 'block' : 'none'
+        }, isOpen ? "<" : ">");
     }, [isOpen]);
 
     return (
-        <div className="flex justify-center gap-5 basis-1/3 select-none cursor-pointer" onClick={toggleOpen}>
-            <div className="flex items-center">Sort by</div>
+        <div 
+            className={`
+                h-[3.5em]
+                flex justify-end gap-5 order-2 basis-1/2 xl:basis-1/3 xl:order-3 select-none cursor-pointer z-40
+            `} 
+            onClick={toggleOpen}>
+            <div className="flex items-center">Sort by:</div>
 
             <div className="h-full w-[270px]">
                 <div className="

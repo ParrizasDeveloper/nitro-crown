@@ -17,6 +17,7 @@ export async function getCars(filters: VehiclesFilter) {
             transmission: true,
             fuelType: true,
             description: true,
+            images: true,
         },
         where: {
             title: { contains: filters.searchText, mode: 'insensitive' },

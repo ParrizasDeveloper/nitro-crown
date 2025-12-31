@@ -40,8 +40,8 @@ export function CardVehicle({car, isActive}: {car: MainCar, isActive: boolean}) 
                 relative w-full aspect-square 
             `}>
                 <Image 
-                    src={car.imageBaseURL} 
-                    alt={`preview of ${car.name}`}
+                    src={car.images[0]}
+                    alt={`preview of ${car.title}`}
                     fill
                     className="object-cover w-full h-full"
                 />
@@ -77,11 +77,11 @@ export function CardVehicle({car, isActive}: {car: MainCar, isActive: boolean}) 
                         </li>
                         <li className="flex items-center gap-1.5">
                             <Gauge className="h-[1em]" />
-                            <span className="">{car.transmision}</span>
+                            <span className="">{car.transmission}</span>
                         </li>
                         <li className="flex items-center gap-1.5">
                             <Fuel className="h-[1em]" />
-                            <span className="">{car.fuel}</span>
+                            <span className="">{car.fuelType}</span>
                         </li>
                     </ul>
                 </section>
@@ -126,7 +126,7 @@ export default function CardsVehicles() {
                         className={`
                             carousel-card-vehicle
                             border-2 rounded-2xl overflow-hidden border-secondary
-                            shadow-xl/50  !w-[300px] sm:!w-[400px] 
+                            shadow-xl/50 !w-[300px] sm:!w-[400px] 
                         `}
                     >
                         {({isActive}) => (
