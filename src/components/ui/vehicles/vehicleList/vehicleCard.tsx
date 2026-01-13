@@ -6,7 +6,7 @@ export default function VehicleCard({props}: {props: MainCar}) {
     return (
         <div className={`
             rounded-2xl p-2 group 
-            hover:scale-105 hover:bg-text hover:text-black
+            hover:scale-[102%] md:hover:scale-105 hover:bg-text hover:text-black
             transition-all duration-300
             max-w-[700px] bg-secondary-dark
         `}>

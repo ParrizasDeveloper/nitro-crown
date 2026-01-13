@@ -46,11 +46,10 @@ export default function VehiclesFilterHeader({
                     relative flex items-center h-[4.5em] mb-20 bg-secondary-dark
                     border-2 border-primary rounded-3xl
                 `}
-                
+                onClick={() => inputRef.current?.focus()}
             >
                 <div 
                     className="h-full flex items-center cursor-text px-5"
-                    onClick={() => inputRef.current?.focus()}
                 >
                     <input
                         ref={inputRef}
@@ -73,19 +72,20 @@ export default function VehiclesFilterHeader({
             </div>
             <div className="flex flex-wrap w-full px-10 text-[1.2em] gap-y-5">
                 <SoldCarsCheckbox active={filters.soldCars} toogleCheck={(soldCars) => setFilters({...filters, soldCars})} />
-                {
-                    !loading ? (
-                        <div className={`
-                            h-[3.5em]
-                            flex justify-center basis-full order-3 xl:basis-1/3 xl:order-2
-                        `}>
-                            <div className="flex items-center">We found {count} vehicles</div>
-                        </div>
-                    ) : (
-                        <LoadingElement />
-                    )
-                    
-                }
+                <div className={`
+                        h-[3.5em]
+                        flex justify-center basis-full order-3 xl:basis-1/3 xl:order-2
+                `}>
+                    {
+                        !loading ? (
+                                <div className="flex items-center">We found {count} vehicles</div>
+                            
+                        ) : (
+                            <LoadingElement />
+                        )
+                        
+                    }
+                </div>
                 <SortBy orderBy={filters.orderBy} setOrderBy={(orderBy) => setFilters({...filters, orderBy})} />
             </div>
         </header>
