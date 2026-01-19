@@ -6,10 +6,15 @@ import gsap from "gsap";
 import { Triangle } from "lucide-react";
 import { useRef, useState } from "react";
 
-export default function SortBy({ orderBy, setOrderBy }: {
-    orderBy: OrderByTypes,
-    setOrderBy: (value: OrderByTypes) => void
-}) {
+export default function SortBy(
+    {
+        orderBy, setOrderBy, className
+    }: {
+        orderBy: OrderByTypes,
+        setOrderBy: (value: OrderByTypes) => void,
+        className?: string,
+    }
+) {
     const [isOpen, setIsOpen] = useState(false);
     const triangleRef = useRef(null);
     const optionsRef = useRef<HTMLDivElement | null>(null);
@@ -57,16 +62,13 @@ export default function SortBy({ orderBy, setOrderBy }: {
 
     return (
         <div 
-            className={`
-                h-[3.5em]
-                flex justify-end gap-5 order-2 basis-1/2 xl:basis-1/3 xl:order-3 select-none cursor-pointer z-40
-            `} 
+            className={className} 
             onClick={toggleOpen}>
-            <div className="flex items-center">Sort by:</div>
+            <div className="flex items-center min-w-[4em]">Sort by:</div>
 
-            <div className="h-full w-[270px]">
+            <div className="h-full w-full md:w-[14em]">
                 <div className="
-                    relative flex justify-between items-center px-5 h-full bg-secondary-dark rounded-lg
+                    relative flex justify-between items-center px-[1em] h-full bg-secondary-dark rounded-lg
                     border border-secondary/50 z-20
                 ">
                     <span>{orderBy}</span>

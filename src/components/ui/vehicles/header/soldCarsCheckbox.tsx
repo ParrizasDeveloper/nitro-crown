@@ -4,17 +4,16 @@ import { Check } from "lucide-react"
 
 export default function SoldCarsCheckbox({
     active,
-    toogleCheck
+    toogleCheck,
+    className,
 }: {
     active: boolean,
-    toogleCheck: (setTo: boolean) => void
+    toogleCheck: (setTo: boolean) => void,
+    className?: string,
 }) {
 
     return (
-        <div className={`
-            h-[3.5em]
-            flex justify-start basis-1/2 xl:basis-1/3 lg:order-1 select-none
-        `}>
+        <div className={className}>
             <input 
                 type="checkbox" 
                 id="sold-cars" 
@@ -24,7 +23,7 @@ export default function SoldCarsCheckbox({
             />
             <label
                 className={`
-                            relative flex items-center border rounded-lg 
+                            relative flex items-center border rounded-lg  w-full md:w-auto
                             h-full cursor-pointer gap-2 px-[1.25em] bg-secondary-dark
                             ${active ? 'border-primary' : 'border-secondary/50'}
                         `}

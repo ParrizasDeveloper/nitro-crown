@@ -36,9 +36,10 @@ export default function VehiclesFilterHeader({
     return (
         <header className={`
             ${chillax.className}
-            flex flex-col items-center pt-header pb-10
+            flex flex-col items-center pt-header pb-10 text-[clamp(0.8rem,1.5vw,1rem)]
         `}>
-            <h1 className={`${pangchang.className} text-[5em] font-semibold mt-20 mb-10`}>
+            <h1 className={`${pangchang.className} 
+                text-[clamp(2rem,6vw,6rem)] font-semibold mt-20 mb-10`}>
                 OUR VEHICLES
             </h1>
             <div 
@@ -70,8 +71,15 @@ export default function VehiclesFilterHeader({
                     </div>
                 </div>
             </div>
-            <div className="flex flex-wrap w-full px-10 text-[1.2em] gap-y-5">
-                <SoldCarsCheckbox active={filters.soldCars} toogleCheck={(soldCars) => setFilters({...filters, soldCars})} />
+            <div className="flex flex-wrap w-full p-3 md:px-10 text-[1.2em] gap-y-5">
+                <SoldCarsCheckbox 
+                    active={filters.soldCars} 
+                    toogleCheck={(soldCars) => setFilters({...filters, soldCars})}
+                    className={`
+                        h-[3.5em] order-2 basis-full
+                        flex justify-start md:basis-1/2 xl:basis-1/3 lg:order-1 select-none
+                    `}
+                />
                 <div className={`
                         h-[3.5em]
                         flex justify-center basis-full order-3 xl:basis-1/3 xl:order-2
@@ -86,7 +94,15 @@ export default function VehiclesFilterHeader({
                         
                     }
                 </div>
-                <SortBy orderBy={filters.orderBy} setOrderBy={(orderBy) => setFilters({...filters, orderBy})} />
+                <SortBy 
+                    orderBy={filters.orderBy} 
+                    setOrderBy={(orderBy) => setFilters({...filters, orderBy})}
+                    className={`
+                        h-[3.5em] order-1 basis-full
+                        flex justify-end gap-5 md:order-2 md:basis-1/2 xl:basis-1/3 xl:order-3 
+                        select-none cursor-pointer z-40 
+                    `}
+                />
             </div>
         </header>
     )

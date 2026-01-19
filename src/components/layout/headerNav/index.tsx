@@ -8,6 +8,7 @@ import { useScrollBar } from "@/providers/ScrollbarProvider";
 export default function HeaderNav() {
     const [sideNavOpen, setSideNavOpen] = useState<boolean>(false)
     const {changeScrollbarSize} = useScrollBar()
+    const {scrollbarSize} = useScrollBar()
 
     useEffect(() => {
         changeScrollbarSize(window.innerWidth - document.body.scrollWidth)
@@ -23,14 +24,17 @@ export default function HeaderNav() {
 
     return (
         <>
-            <header className="fixed top-0 w-dvw h-28 p-4 z-150 pointer-events-none">
+            <header 
+                className="fixed top-0 w-dvw sm:h-28 px-2 sm:px-0 sm:p-4 z-150 pointer-events-none"
+                style={{paddingRight: `${scrollbarSize}px`}}
+            >
                 <nav className={`
                     relative text-contrast flex h-full justify-between items-center
                     m-auto pointer-events-none
                 `}>
                     <div className={`
-                        relative h-full w-[150px] min-w-[150px] 
-                        cursor-pointer rounded-3xl py-3 px-7
+                        relative h-auto w-[90px] sm:w-[150px]
+                        cursor-pointer rounded-3xl py-3 sm:px-7
                         pointer-events-auto
                     `}>
                         <Image
@@ -45,15 +49,15 @@ export default function HeaderNav() {
                     
                     <div
                         className={`
-                        h-full w-[100px] lg:w-[150px] rounded-3xl text-center 
-                        flex justify-center items-center pointer-events-auto
+                        h-full sm:w-[150px] rounded-3xl text-center 
+                        flex justify-center items-center
                     `}
                     >
                         <div 
                             className={`
                                 flex relative group transition-all cursor-pointer rounded-2xl p-2
                                 border-2 border-neutral-700/0 hover:bg-text/15 duration-200
-                                h-16 w-16
+                                h-16 w-16 pointer-events-auto
                             `}
                             onClick={toggleSideNav}
                         >
