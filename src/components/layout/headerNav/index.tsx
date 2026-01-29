@@ -38,7 +38,7 @@ export default function HeaderNav() {
                         pointer-events-auto
                     `}>
                         <Image
-                            src='/images/NCLogo.png'
+                            src='/logos/NCLogo.png'
                             width={1000}
                             height={1000}
                             alt='Nitro Crown Logo from header'
