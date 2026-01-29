@@ -39,7 +39,7 @@ export default function VehiclesFilterHeader({
             flex flex-col items-center pt-header pb-10 text-[clamp(0.8rem,1.5vw,1rem)]
         `}>
             <h1 className={`${pangchang.className} 
-                text-[clamp(2rem,6vw,6rem)] font-semibold mt-20 mb-10`}>
+                text-[clamp(2rem,6vw,6rem)] font-semibold mt-10 mb-10`}>
                 OUR VEHICLES
             </h1>
             <div 
