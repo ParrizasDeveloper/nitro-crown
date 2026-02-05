@@ -19,7 +19,8 @@ export default function SmoothScrollProvider({children}: {children: React.ReactN
         smoother = ScrollSmoother.create({
             smooth: 1.5,
             effects: true,
-            normalizeScroll: true
+            normalizeScroll: true,
+            ignoreMobileResize: true,
         })
 
         smoother.scrollTop(0)

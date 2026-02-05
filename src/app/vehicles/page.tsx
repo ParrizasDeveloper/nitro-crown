@@ -31,7 +31,7 @@ export default function Vehicles() {
             <div
                 className="absolute inset-0 z-0"
                 style={{
-                    background: "radial-gradient(125% 125% at 50% 100%, var(--color-secondary-dark) 40%, black 100%)",
+                    background: "radial-gradient(125% 125% at 50% 100%, black 40%, var(--color-secondary-dark) 100%)",
                 }}
             />
             <div style={{paddingRight: scrollbarSize}} className="relative z-10">
