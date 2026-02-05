@@ -2,7 +2,6 @@
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
-import { ScrollSmoother } from "gsap/ScrollSmoother"
 import { usePathname } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { createContext, useContext, useRef } from "react"
@@ -50,7 +49,6 @@ export function PageTransitionProvider({children}: {children: React.ReactNode}) 
                 onComplete: () => {
                     if (onComplete) onComplete()
                     if (newPath === pathname) {
-                        ScrollSmoother.get()?.scrollTo(0)
                         router.refresh()
 
                         gsap.to(overlayRef.current, {
