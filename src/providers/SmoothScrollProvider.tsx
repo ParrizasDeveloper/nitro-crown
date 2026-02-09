@@ -20,7 +20,6 @@ export default function SmoothScrollProvider({children}: {children: React.ReactN
             smooth: 1.5,
             effects: true,
             normalizeScroll: true,
-            ignoreMobileResize: true,
         })
 
         smoother.scrollTop(0)

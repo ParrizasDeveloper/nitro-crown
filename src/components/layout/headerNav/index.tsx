@@ -24,8 +24,8 @@ export default function HeaderNav() {
 
     return (
         <>
-            <header 
-                className="fixed top-0 w-dvw sm:h-28 px-2 sm:px-0 sm:p-4 z-150 pointer-events-none"
+            <header
+                className="fixed top-0 w-full h-14 sm:h-28 px-2 sm:px-0 sm:p-4 z-150 pointer-events-none"
                 style={{paddingRight: `${scrollbarSize}px`}}
             >
                 <nav className={`
@@ -39,25 +39,25 @@ export default function HeaderNav() {
                     `}>
                         <Image
                             src='/logos/NCLogo.png'
-                            width={1000}
-                            height={1000}
+                            width={1024}
+                            height={512}
                             alt='Nitro Crown Logo from header'
-                            className="h-full w-auto m-auto"
+                            className="max-h-8 sm:max-h-16 w-auto m-auto"
                             priority
                         />
                     </div>
                     
                     <div
                         className={`
-                        h-full sm:w-[150px] rounded-3xl text-center 
+                         sm:w-[150px] rounded-3xl text-center 
                         flex justify-center items-center
                     `}
                     >
                         <div 
                             className={`
-                                flex relative group transition-all cursor-pointer rounded-2xl p-2
+                                flex relative group transition-all cursor-pointer rounded-2xl p-1 sm:p-2
                                 border-2 border-neutral-700/0 hover:bg-text/15 duration-200
-                                h-16 w-16 pointer-events-auto
+                                h-10 w-10 sm:h-16 sm:w-16 pointer-events-auto
                             `}
                             onClick={toggleSideNav}
                         >
