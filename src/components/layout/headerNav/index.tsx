@@ -25,15 +25,15 @@ export default function HeaderNav() {
     return (
         <>
             <header
-                className="fixed top-0 w-full h-14 sm:h-28 px-2 sm:px-0 sm:p-4 z-150 pointer-events-none"
+                className="fixed top-0 w-full h-14 sm:h-28  sm:p-4 z-150 pointer-events-none"
                 style={{paddingRight: `${scrollbarSize}px`}}
             >
                 <nav className={`
-                    relative text-contrast flex h-full justify-between items-center
+                    relative text-contrast flex h-full justify-between items-center px-2 sm:px-0
                     m-auto pointer-events-none
                 `}>
                     <div className={`
-                        relative h-auto w-[90px] sm:w-[150px]
+                        relative h-auto sm:w-[150px]
                         cursor-pointer rounded-3xl py-3 sm:px-7
                         pointer-events-auto
                     `}>
@@ -42,7 +42,7 @@ export default function HeaderNav() {
                             width={1024}
                             height={512}
                             alt='Nitro Crown Logo from header'
-                            className="max-h-8 sm:max-h-16 w-auto m-auto"
+                            className="max-h-8 sm:max-h-16 w-auto"
                             priority
                         />
                     </div>
