@@ -5,9 +5,9 @@ import { CldImage } from "next-cloudinary";
 export default function VehicleCard({props}: {props: MainCar}) {
     return (
         <div className={`
-            rounded-2xl p-2 group 
+            rounded-2xl p-2 group cursor-pointer 
             hover:scale-[102%] md:hover:scale-105 hover:bg-text hover:text-black
-            transition-all duration-300
+            transition-all duration-300 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] hover:shadow-[0_0_15px_0_rgba(255,255,255,0.7)]
             max-w-[700px] bg-secondary-dark
         `}>
             <div>

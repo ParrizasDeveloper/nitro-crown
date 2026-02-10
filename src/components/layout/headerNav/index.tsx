@@ -25,7 +25,7 @@ export default function HeaderNav() {
     return (
         <>
             <header
-                className="fixed top-0 w-full h-14 sm:h-28  sm:p-4 z-150 pointer-events-none"
+                className="fixed top-0 w-dvw h-14 sm:h-28  sm:p-4 z-150 pointer-events-none"
                 style={{paddingRight: `${scrollbarSize}px`}}
             >
                 <nav className={`

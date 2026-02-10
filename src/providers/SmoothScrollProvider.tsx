@@ -15,6 +15,15 @@ export default function SmoothScrollProvider({children}: {children: React.ReactN
     const pathname = usePathname()
 
     useGSAP(() => {
+        const mobile = window.matchMedia("(max-width: 768px)").matches
+
+        if(mobile) {
+            smoother?.kill();
+            smoother = null
+            ScrollTrigger.refresh()
+            return
+        }
+
         smoother?.kill();
         smoother = ScrollSmoother.create({
             smooth: 1.5,
@@ -27,7 +36,7 @@ export default function SmoothScrollProvider({children}: {children: React.ReactN
     }, {dependencies: [pathname]})
     
     return (
-        <div id="smooth-wrapper" className="z-10">
+        <div id="smooth-wrapper" className="z-10 overflow-hidden">
             <div id="smooth-content">
                 {children}
             </div>
