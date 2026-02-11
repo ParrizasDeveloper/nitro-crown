@@ -1,22 +1,36 @@
 import { MainCar } from "@/lib/definitions";
+import { usePageTransition } from "@/providers/PageTransitionProvider";
 import { Calendar, Fuel, Gauge, SquareArrowUp } from "lucide-react";
 import { CldImage } from "next-cloudinary";
+import Link from "next/link";
 
 export default function VehicleCard({props}: {props: MainCar}) {
+    const { startTransitionTo } = usePageTransition()
+
+    function handleClickLink(event: React.MouseEvent<HTMLAnchorElement>, link: string) {
+        event.preventDefault()
+        startTransitionTo(link)
+    }
+
     return (
-        <div className={`
-            rounded-2xl p-2 group cursor-pointer 
-            hover:scale-[102%] md:hover:scale-105 hover:bg-text hover:text-black
-            transition-all duration-300 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] hover:shadow-[0_0_15px_0_rgba(255,255,255,0.7)]
-            max-w-[700px] bg-secondary-dark
-        `}>
-            <div>
+        <Link 
+            href={`/vehicles/${props.id}`} 
+            onClick={(e) => handleClickLink(e, `/vehicles/${props.id}`)}
+            className={`
+                rounded-2xl p-2 group
+                hover:scale-[1.01] md:hover:scale-105 hover:bg-text hover:text-black
+                transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.5)]
+                hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
+                max-w-[700px] bg-secondary-dark
+            `}
+        >
+            <div className="overflow-hidden rounded-xl">
                 <CldImage
                     src={props.images[0]} 
                     alt={`${props.brand} ${props.model}`} 
                     width={400} 
                     height={300} 
-                    className="w-full object-cover rounded-xl mb-4"
+                    className="w-full object-cover  mb-4 group-hover:scale-110 transition-transform duration-300"
                 />
             </div>
             <div className="p-5">
@@ -52,6 +66,6 @@ export default function VehicleCard({props}: {props: MainCar}) {
                     </li>
                 </ul>
             </div>
-        </div>
+        </Link>
     )
 }

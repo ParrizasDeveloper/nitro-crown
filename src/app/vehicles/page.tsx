@@ -28,12 +28,7 @@ export default function Vehicles() {
 
     return (
         <div className="min-h-screen text-text">
-            <div
-                className="absolute inset-0 z-0"
-                style={{
-                    background: "radial-gradient(125% 125% at 50% 100%, black 30%, var(--color-secondary-dark) 100%)",
-                }}
-            />
+            
             <div style={{paddingRight: scrollbarSize}} className="relative z-10">
                 <VehiclesFilterHeader 
                     filters={filters} 

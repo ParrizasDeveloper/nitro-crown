@@ -1,4 +1,5 @@
 export type MainCar = {
+    id: string,
     title: string,
     brand: string,
     model: string,
