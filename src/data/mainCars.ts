@@ -1,6 +1,8 @@
 import { MainCar } from "@/lib/definitions";
 
-export const mainCars: MainCar[] = [
+type MainCarWithoutId = Omit<MainCar, "id">
+
+export const mainCars: MainCarWithoutId[] = [
     {
         title: 'Ford Mustang',
         brand: 'Ford',
