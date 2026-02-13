@@ -24,3 +24,9 @@ export type VehiclesFilter = {
     soldCars: boolean;
     orderBy: OrderByTypes;
 }
+
+export const colorByAvailability = {
+    'Available': 'bg-green-500',
+    'Sold': 'bg-red-500',
+    'Reserved': 'bg-yellow-500',
+}

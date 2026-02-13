@@ -75,7 +75,7 @@ export default function SideNav({open, closeNav}: {open: boolean, closeNav: () =
     function handleHoverLink(event: React.MouseEvent<HTMLAnchorElement>) {
         gsap.to(event.currentTarget.querySelectorAll(".letter-nav"), {
             yPercent: -100,
-            stagger: 0.02
+            stagger: 0.04
         })
         gsap.to(event.currentTarget.querySelector(".index"), {
             color: "#0079f9",
@@ -89,7 +89,7 @@ export default function SideNav({open, closeNav}: {open: boolean, closeNav: () =
     function handleLeaveLink(event: React.MouseEvent<HTMLAnchorElement>) {
         gsap.to(event.currentTarget.querySelectorAll(".letter-nav"), {
             yPercent: 0,
-            stagger: 0.02
+            stagger: 0.04
         })
         gsap.to(event.currentTarget.querySelector(".index"), {
             color: "#FAFAFA",
