@@ -1,5 +1,5 @@
 import { mainCars } from "@/data/mainCars"
-import { MainCar, MainCarWithoutId } from "@/lib/definitions"
+import { MainCarWithoutId } from "@/lib/definitions"
 import { chillax } from "@/styles/fonts"
 import { Calendar, Fuel, Gauge, SquareArrowUp } from "lucide-react"
 import Image from "next/image"
