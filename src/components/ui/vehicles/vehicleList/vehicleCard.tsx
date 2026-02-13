@@ -18,10 +18,10 @@ export default function VehicleCard({props}: {props: MainCar}) {
             onClick={(e) => handleClickLink(e, `/vehicles/${props.id}`)}
             className={`
                 rounded-2xl p-2 group
-                hover:scale-[1.01] md:hover:scale-105 hover:bg-text hover:text-black
+                hover:scale-[1.01] md:hover:scale-102 hover:bg-text hover:text-black
                 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.5)]
                 hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
-                max-w-[700px] bg-secondary-dark
+                max-w-[700px] bg-secondary-dark/70 backdrop-blur-sm
             `}
         >
             <div className="overflow-hidden rounded-xl">
@@ -30,7 +30,7 @@ export default function VehicleCard({props}: {props: MainCar}) {
                     alt={`${props.brand} ${props.model}`} 
                     width={400} 
                     height={300} 
-                    className="w-full object-cover  mb-4 group-hover:scale-110 transition-transform duration-300"
+                    className="w-full object-cover mb-4 group-hover:scale-105 transition-transform duration-300"
                 />
             </div>
             <div className="p-5">
