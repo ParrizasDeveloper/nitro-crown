@@ -157,8 +157,8 @@ export default function VehicleClient({ car }: { car: MainCar }) {
                         </div>
                         <div className={`${chillax.className} flex justify-end`}>
                             <Link 
-                                href={`/about?car=${car.id}`} 
-                                onClick={(e) => handleClickLink(e, `/about?car=${car.id}`)}
+                                href={`/contact?car=${car.id}`} 
+                                onClick={(e) => handleClickLink(e, `/contact?car=${car.id}`)}
                                 className={`
                                     flex rounded-lg px-6 py-4 bg-primary gap-5
                                     text-white font-medium

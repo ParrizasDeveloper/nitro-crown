@@ -12,8 +12,8 @@ export const links = [
         icon: <KeySquare />
     },
     {
-        name: 'About Us',
-        link: '/about',
+        name: 'Contact Us',
+        link: '/contact',
         icon: <Info />
     }
 ]

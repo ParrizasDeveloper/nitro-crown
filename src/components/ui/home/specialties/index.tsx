@@ -69,9 +69,9 @@ export default function Specialties() {
         })
     })
 
-    function handleButtonClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    function handleButtonClick(e: React.MouseEvent<HTMLAnchorElement>, link: string) {
         e.preventDefault()
-        startTransitionTo("/about")
+        startTransitionTo(link)
     }
     return (
         <section className="relative text-text pb-40 overflow-hidden">
@@ -124,8 +124,8 @@ export default function Specialties() {
                     <div className={`
                         flex basis-1/3 lg:basis-1/2 justify-center lg:justify-start order-1 lg:order-0
                     `}>
-                        <div id="specialties-button" className="lg:ml-[20%] h-full min-h-[200px] aspect-square">
-                            <RoundedPrimaryButton title="About Us" link="/about" onClick={handleButtonClick} />
+                        <div id="specialties-button" className="lg:ml-[20%] h-full min-h-50 aspect-square">
+                            <RoundedPrimaryButton title="Contact Us" link="/contact" onClick={(e) =>handleButtonClick(e, "/contact")} />
                         </div>
                     </div>
                     <ul id="list-specialties" className="flex flex-col basis-2/3 lg:basis-1/2 gap-2.5">

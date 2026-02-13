@@ -68,7 +68,7 @@ export default function SortBy(
 
             <div className="h-full w-full md:w-[14em]">
                 <div className="
-                    relative flex justify-between items-center px-[1em] h-full bg-secondary-dark rounded-lg
+                    relative flex justify-between items-center px-[1em] h-full bg-base rounded-lg
                     border border-secondary/50 z-20
                 ">
                     <span>{orderBy}</span>

@@ -24,7 +24,7 @@ export default function SoldCarsCheckbox({
             <label
                 className={`
                             relative flex items-center border rounded-lg  w-full md:w-auto
-                            h-full cursor-pointer gap-2 px-[1.25em] bg-secondary-dark
+                            h-full cursor-pointer gap-2 px-[1.25em] bg-base
                             ${active ? 'border-primary' : 'border-secondary/50'}
                         `}
                 htmlFor="sold-cars"
