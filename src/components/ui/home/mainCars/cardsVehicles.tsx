@@ -1,5 +1,5 @@
 import { mainCars } from "@/data/mainCars"
-import { MainCar } from "@/lib/definitions"
+import { MainCar, MainCarWithoutId } from "@/lib/definitions"
 import { chillax } from "@/styles/fonts"
 import { Calendar, Fuel, Gauge, SquareArrowUp } from "lucide-react"
 import Image from "next/image"
@@ -12,7 +12,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { useRef } from "react"
 
-export function CardVehicle({car, isActive}: {car: MainCar, isActive: boolean}) {
+export function CardVehicle({car, isActive}: {car: MainCarWithoutId, isActive: boolean}) {
     const bgPrice = useRef<HTMLDivElement | null>(null)
     
     useGSAP(() => {

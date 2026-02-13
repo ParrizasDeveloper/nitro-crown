@@ -1,6 +1,6 @@
-import { MainCar } from "@/lib/definitions";
+import { MainCarWithoutId } from "@/lib/definitions";
 
-type MainCarWithoutId = Omit<MainCar, "id">
+
 
 export const mainCars: MainCarWithoutId[] = [
     {

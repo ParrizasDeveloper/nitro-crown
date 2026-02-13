@@ -13,6 +13,8 @@ export type MainCar = {
     images: string[],
 }
 
+export type MainCarWithoutId = Omit<MainCar, "id">
+
 export type OrderByTypes = 'Disponibility'
     | 'Price: Low to High'
     | 'Price: High to Low'
