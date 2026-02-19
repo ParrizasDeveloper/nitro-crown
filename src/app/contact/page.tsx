@@ -157,7 +157,7 @@ export default function Page() {
                                     duration-300 group
                                 `}
                         >
-                            <span>I'm interested</span>
+                            <span>Send request</span>
                             <ArrowRight className="-rotate-45 stroke-1 group-hover:rotate-0 transition-transform duration-300" />
                         </button>
                     </div>
