@@ -4,10 +4,11 @@ import { MainCar, VehiclesFilter } from "./definitions"
 import prisma from "./prisma"
 
 export async function getCars(filters: VehiclesFilter) {
+    const searchText = filters.searchText.trim()
     const cars:MainCar[] = await prisma.car.findMany({
         select: {
             id: true,
-            title: true,
+            slug: true,
             brand: true,
             model: true,
             availability: true,
@@ -21,7 +22,12 @@ export async function getCars(filters: VehiclesFilter) {
             images: true,
         },
         where: {
-            title: { contains: filters.searchText, mode: 'insensitive' },
+            OR: searchText
+                ? [
+                    { brand: { contains: searchText, mode: 'insensitive' } },
+                    { model: { contains: searchText, mode: 'insensitive' } },
+                ]
+                : undefined,
             availability: filters.soldCars ? undefined : 'Available',
         },
     })
@@ -33,7 +39,7 @@ export async function getCarById(id: string) {
         where: { id },
         select: {
             id: true,
-            title: true,
+            slug: true,
             brand: true,
             model: true,
             availability: true,
