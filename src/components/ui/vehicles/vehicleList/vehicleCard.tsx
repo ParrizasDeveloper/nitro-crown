@@ -20,11 +20,10 @@ export default function VehicleCard({props}: {props: MainCar}) {
                 rounded-2xl p-2 group
                 hover:scale-[1.01] md:hover:scale-102 hover:bg-text hover:text-black
                 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.5)]
-                hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
-                max-w-[700px] bg-base backdrop-blur-sm
+                hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)] bg-base backdrop-blur-sm
             `}
         >
-            <div className="overflow-hidden rounded-xl">
+            <div className="overflow-hidden rounded-xl aspect-video">
                 <CldImage
                     src={props.images[0]} 
                     alt={`${props.brand} ${props.model}`} 
