@@ -4,6 +4,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import CardsVehicles from "./cardsVehicles"
 import { useGSAP } from "@gsap/react"
+import BrandsSlider from "./brandsSlider"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -28,18 +29,26 @@ export default function MainCars() {
             ease: "power2.out"
         }, ">-0.3")
 
-        gsap.from(".carousel-card-vehicle", {
-            opacity: 0,
-            y: 50,
-            stagger: {
-                from: "center",
-                grid: "auto",
-                each: 0.1
-            },
+        gsap.from("#brands-slider", {
             scrollTrigger: {
-                trigger: "#container-main-slider",
-                start: "30% bottom"
-            }
+                trigger: "#brands-slider",
+                start: "top 75%",
+            },
+            opacity: 0,
+            ease: "power2.out",
+            duration: 1,
+            y: 50
+        })
+
+        gsap.from("#main-cars-slider", {
+            scrollTrigger: {
+                trigger: "#main-cars-slider",
+                start: "top 75%",
+            },
+            opacity: 0,
+            ease: "power2.out",
+            duration: 1,
+            y: 50
         })
     })
     
@@ -47,7 +56,7 @@ export default function MainCars() {
         <section 
             className={`
                 relative z-50 text-text overflow-hidden py-20
-                bg-gradient-to-b from-primary-dark to-secondary-dark -mb-[1px]
+                bg-gradient-to-b from-base to-secondary-dark -mb-[1px]
             `}
             style={{ marginRight: `${scrollbarSize}px` }}
         >
@@ -66,6 +75,7 @@ export default function MainCars() {
                 <div id="main-slider-right-line" className="h-[1px] bg-gradient-to-r max-w-[300px] from-text/50 grow"></div>
             </header>
             <div>
+                <BrandsSlider />
                 <CardsVehicles />
             </div>
         </section>

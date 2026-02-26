@@ -32,3 +32,15 @@ export const colorByAvailability = {
     'Sold': 'bg-red-500',
     'Reserved': 'bg-yellow-500',
 }
+
+export const Brands = {
+    'Audi': '/logos/brands/Audi-Logo.wine.svg',
+    'BMW': '/logos/brands/BMW-Logo.wine.svg',
+    'Mercedes': '/logos/brands/Mercedes-Logo.wine.svg',
+    'Porsche': '/logos/brands/Porsche-Logo.wine.svg',
+    'Ferrari': '/logos/brands/Ferrari-Logo.wine.svg',
+    'Lamborghini': '/logos/brands/Lamborghini-Logo.wine.svg',
+    'Ford': '/logos/brands/Ford-Logo.wine.svg',
+    'Opel': '/logos/brands/Opel-Logo.wine.svg',
+    'Tesla': '/logos/brands/Tesla-Logo.wine.svg',
+}

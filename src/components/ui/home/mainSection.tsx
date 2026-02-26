@@ -135,7 +135,7 @@ export default function MainSection() {
             
             <div id="footer-main-section" className={`
                 absolute top-0 w-full h-[calc(100%+1px)] [clip-path:polygon(0_100%,100%_100%,100%_100%,0_100%)]
-                bg-primary-dark z-50
+                bg-base z-50
             `}></div>
         </section>
     )

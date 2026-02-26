@@ -1,15 +1,17 @@
-import { mainCars } from "@/data/mainCars"
-import { MainCarWithoutId } from "@/lib/definitions"
+'use client'
+
+import { MainCar } from "@/lib/definitions"
 import { chillax } from "@/styles/fonts"
 import { Calendar, Fuel, Gauge, SquareArrowUp } from "lucide-react"
-import Image from "next/image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from "swiper/modules"
 import "swiper/css"
 import styles from "./InfiniteSlider.module.css"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { getMainCars } from "@/lib/actions"
+import { CldImage } from "next-cloudinary"
 
-export function CardVehicle({car}: {car: MainCarWithoutId}) {
+export function CardVehicle({car}: {car: MainCar}) {
     const bgPrice = useRef<HTMLDivElement | null>(null)
 
     return (
@@ -20,10 +22,11 @@ export function CardVehicle({car}: {car: MainCarWithoutId}) {
             <div className={`
                 relative w-full aspect-video
             `}>
-                <Image 
+                <CldImage 
                     src={car.images[0]}
                     alt={`preview of ${car.brand} ${car.model}`}
-                    fill
+                    width={500}
+                    height={300}
                     className="object-cover w-full h-full"
                 />
             </div>
@@ -72,36 +75,44 @@ export function CardVehicle({car}: {car: MainCarWithoutId}) {
 }
 
 export default function CardsVehicles() {
+    const [mainCars, setMainCars] = useState<MainCar[] | null>(null)
+
+    useEffect(() => {
+        getMainCars().then(cars => setMainCars(cars))
+    }, [])
+
     return (
-        <div id="container-main-slider" className="pb-header mx-auto">
-            <Swiper
-                slidesPerView={"auto"}
-                spaceBetween={24}
-                loop={true}
-                speed={6000}
-                autoplay={{
-                    delay: 0,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: false
-                }}
-                allowTouchMove={false}
-                modules={[Autoplay]}
-                className={`select-none max-w-[2000px] ${styles.infiniteSlider}`}
-                style={{padding: "10px 0 50px 0"}}
-            >
-                {mainCars.map((car, index) => (
-                    <SwiperSlide 
-                        key={index} 
-                        className={`
-                            carousel-card-vehicle
-                            rounded-2xl overflow-hidden border-secondary
-                            shadow-xl/50 !w-[300px] sm:!w-[500px] 
-                        `}
-                    >
-                        <CardVehicle car={car} />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+        <div id="main-cars-slider" className="h-[450px] sm:h-[600px] mx-auto">
+            {mainCars && (
+                <Swiper
+                    slidesPerView={"auto"}
+                    spaceBetween={24}
+                    loop={true}
+                    speed={8000}
+                    autoplay={{
+                        delay: 0,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: false
+                    }}
+                    allowTouchMove={false}
+                    modules={[Autoplay]}
+                    className={`select-none max-w-[2000px] ${styles.infiniteSlider}`}
+                >
+                    {mainCars.map((car, index) => (
+                        <SwiperSlide 
+                            key={index} 
+                            className={`
+                                carousel-card-vehicle
+                                rounded-2xl overflow-hidden border-secondary
+                                shadow-xl/50 !w-[300px] sm:!w-[600px] 
+                            `}
+                        >
+                            <CardVehicle car={car} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            )}
+            
         </div>
     )
 }
