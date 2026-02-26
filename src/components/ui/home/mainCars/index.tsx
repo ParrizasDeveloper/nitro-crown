@@ -1,5 +1,5 @@
 import { useScrollBar } from "@/providers/ScrollbarProvider"
-import { chillax, pangchang, roboto } from "@/styles/fonts"
+import { anton, chillax, pangchang, roboto, teko } from "@/styles/fonts"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import CardsVehicles from "./cardsVehicles"
@@ -53,13 +53,13 @@ export default function MainCars() {
         >
             <header
                 className={`
-                    ${pangchang.className} text-6xl
+                    ${teko.className} text-xl
                     flex gap-5 justify-center items-center px-5 sm:px-16 mb-14 sm:mb-header
                 `}
             >
                 <div id="main-slider-left-line" className="h-[1px] bg-gradient-to-l from-text/50 max-w-[300px] grow"></div>
                 <div id="header-title-main-slider" className="">
-                    <p className="text-[clamp(2rem,9vw,4.5rem)] pt-[0.1em] text-text font-medium">
+                    <p className="text-[clamp(2rem,10vw,5rem)] pt-[0.1em] text-text font-bold">
                         OUR SELECTION
                     </p>
                 </div>

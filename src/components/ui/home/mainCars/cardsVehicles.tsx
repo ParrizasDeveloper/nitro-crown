@@ -4,32 +4,13 @@ import { chillax } from "@/styles/fonts"
 import { Calendar, Fuel, Gauge, SquareArrowUp } from "lucide-react"
 import Image from "next/image"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { EffectCoverflow, Pagination } from "swiper/modules"
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-coverflow'
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
-import { useRef } from "react"
+import { Autoplay } from "swiper/modules"
+import "swiper/css"
+import styles from "./InfiniteSlider.module.css"
+import { useEffect, useRef } from "react"
 
-export function CardVehicle({car, isActive}: {car: MainCarWithoutId, isActive: boolean}) {
+export function CardVehicle({car}: {car: MainCarWithoutId}) {
     const bgPrice = useRef<HTMLDivElement | null>(null)
-    
-    useGSAP(() => {
-        if(isActive) {
-            gsap.to(bgPrice.current, {
-                clipPath: "polygon(5% 0,100% 0,95% 100%,0 100%)",
-                ease: "power3.inOut",
-                duration: 1
-            })
-        } else {
-            gsap.to(bgPrice.current, {
-                clipPath: "polygon(5% 0,10% 0,5% 100%,0 100%)",
-                ease: "power3.inOut",
-                duration: 1
-            })
-        }
-    }, {dependencies: [isActive]})
 
     return (
         <div className={`
@@ -37,11 +18,11 @@ export function CardVehicle({car, isActive}: {car: MainCarWithoutId, isActive: b
             relative
         `}>
             <div className={`
-                relative w-full aspect-square 
+                relative w-full aspect-video
             `}>
                 <Image 
                     src={car.images[0]}
-                    alt={`preview of ${car.title}`}
+                    alt={`preview of ${car.brand} ${car.model}`}
                     fill
                     className="object-cover w-full h-full"
                 />
@@ -92,49 +73,36 @@ export function CardVehicle({car, isActive}: {car: MainCarWithoutId, isActive: b
 
 export default function CardsVehicles() {
     return (
-        <div id="container-main-slider" className=" pb-header mx-auto">
+        <div id="container-main-slider" className="pb-header mx-auto">
             <Swiper
-                modules={[Pagination, EffectCoverflow]}
-                coverflowEffect={{
-                    rotate: 30,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                    scale: .9,
-                }}
-                breakpoints={{
-                    320: {
-                        coverflowEffect: {},
-                        
-                    }
-                }}
-                effect="coverflow"
-                pagination
-                initialSlide={2}
-                grabCursor
-                spaceBetween={0}
                 slidesPerView={"auto"}
-                centeredSlides
-                className="select-none"
+                spaceBetween={24}
+                loop={true}
+                speed={6000}
+                autoplay={{
+                    delay: 0,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: false
+                }}
+                allowTouchMove={false}
+                modules={[Autoplay]}
+                className={`select-none max-w-[2000px] ${styles.infiniteSlider}`}
                 style={{padding: "10px 0 50px 0"}}
             >
                 {mainCars.map((car, index) => (
                     <SwiperSlide 
                         key={index} 
-                        
                         className={`
                             carousel-card-vehicle
-                            border-2 rounded-2xl overflow-hidden border-secondary
-                            shadow-xl/50 !w-[300px] sm:!w-[400px] 
+                            rounded-2xl overflow-hidden border-secondary
+                            shadow-xl/50 !w-[300px] sm:!w-[500px] 
                         `}
                     >
-                        {({isActive}) => (
-                            <CardVehicle car={car} isActive={isActive} />
-                        )}
+                        <CardVehicle car={car} />
                     </SwiperSlide>
                 ))}
             </Swiper>
         </div>
     )
 }
+
