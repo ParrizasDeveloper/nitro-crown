@@ -10,7 +10,7 @@ export default function BrandsSlider() {
     return (
         <div 
             id="brands-slider"
-            className="bg-gradient-to-r from-transparent via-50% via-white/50 to-transparent mb-10"
+            className="bg-gradient-to-r from-transparent via-50% via-secondary to-transparent mb-10"
         >
             <Swiper
                 slidesPerView={"auto"}

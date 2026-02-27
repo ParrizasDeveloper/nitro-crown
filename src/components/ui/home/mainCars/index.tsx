@@ -37,7 +37,7 @@ export default function MainCars() {
             opacity: 0,
             ease: "power2.out",
             duration: 1,
-            y: 50
+            y: 150
         })
 
         gsap.from("#main-cars-slider", {
@@ -48,7 +48,7 @@ export default function MainCars() {
             opacity: 0,
             ease: "power2.out",
             duration: 1,
-            y: 50
+            y: 150
         })
     })
     
