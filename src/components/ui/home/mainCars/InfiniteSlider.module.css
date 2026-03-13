@@ -1,3 +1,8 @@
 .infiniteSlider :global(.swiper-wrapper) {
   transition-timing-function: linear !important;
+  height: 100%;
+}
+
+.infiniteSlider :global(.swiper-slide) {
+  height: 100% !important;
 }

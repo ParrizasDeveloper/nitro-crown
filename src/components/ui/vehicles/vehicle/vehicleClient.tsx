@@ -54,13 +54,13 @@ export default function VehicleClient({ car }: { car: MainCar }) {
         <div 
             className={`
                 ${roboto.className}
-                text-text min-h-dvh pt-header
+                text-text xl:text-white min-h-dvh pt-header
             `}
             style={{paddingRight: scrollbarSize}}
         >
             <section className="px-5">
                 <Link
-                    className="inline-flex items-center justify-center gap-6 mt-5 mb-12 group h-11 w-62.5"
+                    className="inline-flex items-center justify-center gap-3 sm:gap-6 mt-5 mb-8 sm:mb-12 group h-10 sm:h-11 w-full max-w-62.5 text-sm text-text"
                     href="/vehicles"
                     onClick={(e) => handleClickLink(e, "/vehicles")}
                 >
@@ -78,8 +78,8 @@ export default function VehicleClient({ car }: { car: MainCar }) {
                         <ArrowLeft className="w-full h-full stroke-1" />
                     </div>
                 </Link>
-                <div ref={contentRef} className="relative grid grid-cols-2 items-start gap-5">
-                    <section className="flex flex-col">
+                <div ref={contentRef} className="relative xl:grid grid-cols-2 items-start gap-5">
+                    <section className="xl:flex flex-col hidden">
                         {car.images.map((image) => (
                             <CldImage 
                                 key={image} 
@@ -91,62 +91,62 @@ export default function VehicleClient({ car }: { car: MainCar }) {
                             />
                         ))}
                     </section>
-                    <section ref={panelRef} className="px-28">
-                        <h1 className={`${pangchang.className} text-4xl font-bold`}>
+                    <section ref={panelRef} className="px-0 sm:px-10 lg:px-20 xl:px-28 mb-10">
+                        <h1 className={`${pangchang.className} text-3xl sm:text-4xl font-bold`}>
                             {car.brand}
                         </h1>
-                        <h2 className={`${pangchang.className} text-4xl`}>{car.model}</h2>
-                        <div className="relative inline-block my-10 px-8 py-1">
+                        <h2 className={`${pangchang.className} text-3xl sm:text-4xl`}>{car.model}</h2>
+                        <div className="relative inline-block my-8 sm:my-10 px-6 sm:px-8 py-1">
                             <div className="absolute bg-primary inset-0 z-0 -skew-x-18"></div>
-                            <span className="relative text-2xl font-semibold">
+                            <span className="relative text-xl sm:text-2xl font-semibold">
                                 {car.price.toLocaleString("es-ES").replace(".", " ")} €
                             </span>
                         </div>
-                        <div className="mb-14">
+                        <div className="mb-10 sm:mb-14 text-sm text-text">
                             {car.description}
                         </div>
                         <div className={`${chillax.className} text-md mb-10`}>
-                            <div className="flex justify-between border-y border-text/50 py-5">
+                            <div className="flex justify-between gap-4 border-y border-text/50 xl:border-white/30 py-4 sm:py-5">
                                 <div className="flex items-center gap-5">
                                     <CarFront /> MODEL
                                 </div>
-                                <div>
+                                <div className="text-right">
                                     {car.brand} {car.model}
                                 </div>
                             </div>
-                            <div className="flex justify-between border-b border-text/50 py-5">
+                            <div className="flex justify-between gap-4 border-b border-text/50 xl:border-white/30 py-4 sm:py-5">
                                 <div className="flex items-center gap-5">
                                     <CalendarDays /> YEAR
                                 </div>
-                                <div>
+                                <div className="text-right">
                                     {car.year}
                                 </div>
                             </div>
-                            <div className="flex justify-between border-b border-text/50 py-5">
+                            <div className="flex justify-between gap-4 border-b border-text/50 xl:border-white/30 py-4 sm:py-5">
                                 <div className="flex items-center gap-5">
                                     <SquareArrowRight /> MILEAGE
                                 </div>
-                                <div>
+                                <div className="text-right">
                                     {car.kms.toLocaleString("es-ES").replace(".", " ")} KMS
                                 </div>
                             </div>
-                            <div className="flex justify-between border-b border-text/50 py-5">
+                            <div className="flex justify-between gap-4 border-b border-text/50 xl:border-white/30 py-4 sm:py-5">
                                 <div className="flex items-center gap-5">
                                     <Fuel /> FUEL
                                 </div>
-                                <div>
+                                <div className="text-right">
                                     {car.fuelType}
                                 </div>
                             </div>
-                            <div className="flex justify-between border-b border-text/50 py-5">
+                            <div className="flex justify-between gap-4 border-b border-text/50 xl:border-white/30 py-4 sm:py-5">
                                 <div className="flex items-center gap-5">
                                     <Gauge /> TRANSMISSION
                                 </div>
-                                <div>
+                                <div className="text-right">
                                     {car.transmission}
                                 </div>
                             </div>
-                            <div className="flex justify-between border-b border-text/50 py-5">
+                            <div className="flex justify-between gap-4 border-b border-text/50 xl:border-white/30 py-4 sm:py-5">
                                 <div className="flex items-center gap-5">
                                     <Handshake /> Availability
                                 </div>
@@ -179,7 +179,7 @@ export default function VehicleClient({ car }: { car: MainCar }) {
                     slidesPerView={1}
                     modules={[Thumbs]}
                     thumbs={{swiper: thumbsSwiper}}
-                    className="rounded-xl relative h-dvh"
+                    className="rounded-xl relative w-full overflow-hidden aspect-[16/9]"
                 >
                     {car.images.map((image) => (
                         <SwiperSlide key={image}>
@@ -194,15 +194,24 @@ export default function VehicleClient({ car }: { car: MainCar }) {
                     ))}
                 </Swiper>
                 <div className={`
-                    absolute bottom-2 w-150 left-1/2 -translate-x-1/2 p-2 rounded-xl
-                    z-10 bg-base/60 backdrop-blur-sm
+                    absolute bottom-2 left-1/2 -translate-x-1/2 p-2 rounded-xl
+                    sm:w-[calc(100%-1rem)] max-w-full sm:max-w-150
+                    z-10 bg-base/60 backdrop-blur-sm hidden lg:block 
                     
                 `}>
                     <Swiper
                         onSwiper={setThumbsSwiper}
                         watchSlidesProgress
-                        spaceBetween={10}
-                        slidesPerView={car.images.length >= 5 ? 5 : car.images.length}
+                        spaceBetween={8}
+                        slidesPerView={Math.min(car.images.length, 3)}
+                        breakpoints={{
+                            480: {
+                                slidesPerView: Math.min(car.images.length, 4),
+                            },
+                            640: {
+                                slidesPerView: Math.min(car.images.length, 5),
+                            },
+                        }}
                         modules={[Thumbs]}
                     >
                         {thumbsSwiper && car.images.map((image) => (
@@ -211,7 +220,7 @@ export default function VehicleClient({ car }: { car: MainCar }) {
                                     src={image}
                                     width={2240}
                                     height={1256}
-                                    className="w-full h-full rounded-xl cursor-pointer"
+                                    className="w-full aspect-[16/9] h-auto rounded-lg object-cover cursor-pointer"
                                     alt="Image of the vehicle"
                                 />
                             </SwiperSlide>
